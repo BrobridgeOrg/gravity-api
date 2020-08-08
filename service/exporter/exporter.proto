@@ -7,9 +7,8 @@ service Exporter {
 }
 
 message SendEventRequest {
-  string eventName = 1;
-  string table = 2;
-  string payload = 3;
+  string channel = 1;
+  bytes payload = 2;
 }
 
 message SendEventReply {
