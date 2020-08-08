@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gravity.api.exporter;
+
+service Exporter {
+  rpc SendEvent(SendEventRequest) returns (SendEventReply) {}
+}
+
+message SendEventRequest {
+  string eventName = 1;
+  string table = 2;
+  string payload = 3;
+}
+
+message SendEventReply {
+  bool success = 1;
+  string reason = 2;
+}
