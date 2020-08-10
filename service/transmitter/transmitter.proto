@@ -1,0 +1,25 @@
+syntax = "proto3";
+
+package gravity.api.transmitter;
+
+service Transmitter  {
+  rpc Send(Record) returns (SendReply) {}
+}
+
+message SendReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message Record {
+  string eventName = 1;
+  string table = 2;
+  string method = 3;
+  repeated Field fields = 4;
+}
+
+message Field {
+  string name = 1;
+  bytes value = 2;
+  bool isPrimary = 3;
+}
