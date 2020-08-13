@@ -6,6 +6,17 @@ service Transmitter  {
   rpc Send(Record) returns (SendReply) {}
 }
 
+enum DataType {
+  BOOLEAN = 0;
+  BINARY = 1;
+  STRING = 2;
+  UINT64 = 3;
+  INT64 = 4;
+  FLOAT64 = 5;
+  ARRAY = 6;
+  MAP = 7;
+}
+
 message SendReply {
   bool success = 1;
   string reason = 2;
@@ -20,6 +31,21 @@ message Record {
 
 message Field {
   string name = 1;
+  Value value = 3;
+  bool isPrimary = 4;
+}
+
+message Value {
+  DataType type = 1;
   bytes value = 2;
-  bool isPrimary = 3;
+  MapValue map = 3;
+  ArrayValue array = 4;
+}
+
+message MapValue {
+  repeated Field fields = 1;
+}
+
+message ArrayValue {
+  repeated Value elements = 1;
 }
