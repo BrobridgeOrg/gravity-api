@@ -4,6 +4,13 @@ package gravity.api.transmitter;
 
 service Transmitter  {
   rpc Send(Record) returns (SendReply) {}
+  rpc Truncate(TruncateRequest) returns (TruncateReply) {}
+}
+
+enum Method {
+  INSERT = 0;
+  UPDATE = 1;
+  DELETE = 2;
 }
 
 enum DataType {
@@ -25,7 +32,7 @@ message SendReply {
 message Record {
   string eventName = 1;
   string table = 2;
-  string method = 3;
+  Method method = 3;
   repeated Field fields = 4;
 }
 
@@ -48,4 +55,13 @@ message MapValue {
 
 message ArrayValue {
   repeated Value elements = 1;
+}
+
+message TruncateRequest {
+  string table = 1;
+}
+
+message TruncateReply {
+  bool success = 1;
+  string reason = 2;
 }
