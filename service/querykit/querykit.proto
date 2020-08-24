@@ -1,0 +1,57 @@
+syntax = "proto3";
+
+package gravity.api.querykit;
+
+service QueryKit {
+  rpc Query(QueryRequest) returns (QueryReply) {}
+}
+
+enum DataType {
+  BOOLEAN = 0;
+  BINARY = 1;
+  STRING = 2;
+  UINT64 = 3;
+  INT64 = 4;
+  FLOAT64 = 5;
+  ARRAY = 6;
+  MAP = 7;
+}
+
+message Record {
+  repeated Field fields = 1;
+}
+
+message Field {
+  string name = 1;
+  Value value = 2;
+}
+
+message Value {
+  DataType type = 1;
+  bytes value = 2;
+  MapValue map = 3;
+  ArrayValue array = 4;
+}
+
+message MapValue {
+  repeated Field fields = 1;
+}
+
+message ArrayValue {
+  repeated Value elements = 1;
+}
+
+message QueryRequest {
+  string table = 1;
+  repeated Field conditions = 2;
+  int64 limit = 3;
+  int64 offset = 4;
+  string orderBy = 5;
+  bool descending = 6;
+}
+
+message QueryReply {
+  bool success = 1;
+  string reason = 2;
+  repeated Record records = 3;
+}
