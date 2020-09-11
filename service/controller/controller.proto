@@ -1,0 +1,63 @@
+syntax = "proto3";
+
+package gravity.api.controller;
+
+service Controller {
+  rpc GetClientCount(GetClientCountRequest) returns (GetClientCountReply) {}
+  rpc GetPipelineCount(GetPipelineCountRequest) returns (GetPipelineCountReply) {}
+  rpc Register(RegisterRequest) returns (RegisterReply) {}
+  rpc ReleasePipelines(ReleasePipelinesRequest) returns (ReleasePipelinesReply) {}
+}
+
+message GetClientCountRequest {
+}
+
+message GetClientCountReply {
+  uint64 count = 1;
+}
+
+message GetPipelineCountRequest {
+}
+
+message GetPipelineCountReply {
+  uint64 count = 1;
+}
+
+message RegisterRequest {
+  string clientID = 1;
+}
+
+message RegisterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message ReleasePipelinesRequest {
+  string clientID = 1;
+  repeated uint64 pipelines = 2;
+}
+
+message ReleasePipelinesReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message AssignPipelineRequest {
+  string clientID = 1;
+  uint64 pipelineID = 2;
+}
+
+message AssignPipelineReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message RevokePipelineRequest {
+  string clientID = 1;
+  uint64 pipelineID = 2;
+}
+
+message RevokePipelineReply {
+  bool success = 1;
+  string reason = 2;
+}
