@@ -50,24 +50,5 @@ message ReleasePipelinesRequest {
 message ReleasePipelinesReply {
   bool success = 1;
   string reason = 2;
-}
-
-message AssignPipelineRequest {
-  string clientID = 1;
-  uint64 pipelineID = 2;
-}
-
-message AssignPipelineReply {
-  bool success = 1;
-  string reason = 2;
-}
-
-message RevokePipelineRequest {
-  string clientID = 1;
-  uint64 pipelineID = 2;
-}
-
-message RevokePipelineReply {
-  bool success = 1;
-  string reason = 2;
+  repeated uint64 failures = 3;
 }
