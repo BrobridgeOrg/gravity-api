@@ -250,6 +250,92 @@ func (m *RegisterReply) GetReason() string {
 	return ""
 }
 
+type UnregisterRequest struct {
+	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UnregisterRequest) Reset()         { *m = UnregisterRequest{} }
+func (m *UnregisterRequest) String() string { return proto.CompactTextString(m) }
+func (*UnregisterRequest) ProtoMessage()    {}
+func (*UnregisterRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ed7f10298fa1d90f, []int{6}
+}
+
+func (m *UnregisterRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UnregisterRequest.Unmarshal(m, b)
+}
+func (m *UnregisterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UnregisterRequest.Marshal(b, m, deterministic)
+}
+func (m *UnregisterRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UnregisterRequest.Merge(m, src)
+}
+func (m *UnregisterRequest) XXX_Size() int {
+	return xxx_messageInfo_UnregisterRequest.Size(m)
+}
+func (m *UnregisterRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_UnregisterRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UnregisterRequest proto.InternalMessageInfo
+
+func (m *UnregisterRequest) GetClientID() string {
+	if m != nil {
+		return m.ClientID
+	}
+	return ""
+}
+
+type UnregisterReply struct {
+	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *UnregisterReply) Reset()         { *m = UnregisterReply{} }
+func (m *UnregisterReply) String() string { return proto.CompactTextString(m) }
+func (*UnregisterReply) ProtoMessage()    {}
+func (*UnregisterReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_ed7f10298fa1d90f, []int{7}
+}
+
+func (m *UnregisterReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_UnregisterReply.Unmarshal(m, b)
+}
+func (m *UnregisterReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_UnregisterReply.Marshal(b, m, deterministic)
+}
+func (m *UnregisterReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UnregisterReply.Merge(m, src)
+}
+func (m *UnregisterReply) XXX_Size() int {
+	return xxx_messageInfo_UnregisterReply.Size(m)
+}
+func (m *UnregisterReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_UnregisterReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_UnregisterReply proto.InternalMessageInfo
+
+func (m *UnregisterReply) GetSuccess() bool {
+	if m != nil {
+		return m.Success
+	}
+	return false
+}
+
+func (m *UnregisterReply) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
+}
+
 type ReleasePipelinesRequest struct {
 	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
 	Pipelines            []uint64 `protobuf:"varint,2,rep,packed,name=pipelines,proto3" json:"pipelines,omitempty"`
@@ -262,7 +348,7 @@ func (m *ReleasePipelinesRequest) Reset()         { *m = ReleasePipelinesRequest
 func (m *ReleasePipelinesRequest) String() string { return proto.CompactTextString(m) }
 func (*ReleasePipelinesRequest) ProtoMessage()    {}
 func (*ReleasePipelinesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{6}
+	return fileDescriptor_ed7f10298fa1d90f, []int{8}
 }
 
 func (m *ReleasePipelinesRequest) XXX_Unmarshal(b []byte) error {
@@ -309,7 +395,7 @@ func (m *ReleasePipelinesReply) Reset()         { *m = ReleasePipelinesReply{} }
 func (m *ReleasePipelinesReply) String() string { return proto.CompactTextString(m) }
 func (*ReleasePipelinesReply) ProtoMessage()    {}
 func (*ReleasePipelinesReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{7}
+	return fileDescriptor_ed7f10298fa1d90f, []int{9}
 }
 
 func (m *ReleasePipelinesReply) XXX_Unmarshal(b []byte) error {
@@ -356,7 +442,7 @@ func (m *AssignPipelineRequest) Reset()         { *m = AssignPipelineRequest{} }
 func (m *AssignPipelineRequest) String() string { return proto.CompactTextString(m) }
 func (*AssignPipelineRequest) ProtoMessage()    {}
 func (*AssignPipelineRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{8}
+	return fileDescriptor_ed7f10298fa1d90f, []int{10}
 }
 
 func (m *AssignPipelineRequest) XXX_Unmarshal(b []byte) error {
@@ -403,7 +489,7 @@ func (m *AssignPipelineReply) Reset()         { *m = AssignPipelineReply{} }
 func (m *AssignPipelineReply) String() string { return proto.CompactTextString(m) }
 func (*AssignPipelineReply) ProtoMessage()    {}
 func (*AssignPipelineReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{9}
+	return fileDescriptor_ed7f10298fa1d90f, []int{11}
 }
 
 func (m *AssignPipelineReply) XXX_Unmarshal(b []byte) error {
@@ -450,7 +536,7 @@ func (m *RevokePipelineRequest) Reset()         { *m = RevokePipelineRequest{} }
 func (m *RevokePipelineRequest) String() string { return proto.CompactTextString(m) }
 func (*RevokePipelineRequest) ProtoMessage()    {}
 func (*RevokePipelineRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{10}
+	return fileDescriptor_ed7f10298fa1d90f, []int{12}
 }
 
 func (m *RevokePipelineRequest) XXX_Unmarshal(b []byte) error {
@@ -497,7 +583,7 @@ func (m *RevokePipelineReply) Reset()         { *m = RevokePipelineReply{} }
 func (m *RevokePipelineReply) String() string { return proto.CompactTextString(m) }
 func (*RevokePipelineReply) ProtoMessage()    {}
 func (*RevokePipelineReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{11}
+	return fileDescriptor_ed7f10298fa1d90f, []int{13}
 }
 
 func (m *RevokePipelineReply) XXX_Unmarshal(b []byte) error {
@@ -539,6 +625,8 @@ func init() {
 	proto.RegisterType((*GetPipelineCountReply)(nil), "gravity.api.controller.GetPipelineCountReply")
 	proto.RegisterType((*RegisterRequest)(nil), "gravity.api.controller.RegisterRequest")
 	proto.RegisterType((*RegisterReply)(nil), "gravity.api.controller.RegisterReply")
+	proto.RegisterType((*UnregisterRequest)(nil), "gravity.api.controller.UnregisterRequest")
+	proto.RegisterType((*UnregisterReply)(nil), "gravity.api.controller.UnregisterReply")
 	proto.RegisterType((*ReleasePipelinesRequest)(nil), "gravity.api.controller.ReleasePipelinesRequest")
 	proto.RegisterType((*ReleasePipelinesReply)(nil), "gravity.api.controller.ReleasePipelinesReply")
 	proto.RegisterType((*AssignPipelineRequest)(nil), "gravity.api.controller.AssignPipelineRequest")
@@ -550,30 +638,32 @@ func init() {
 func init() { proto.RegisterFile("controller.proto", fileDescriptor_ed7f10298fa1d90f) }
 
 var fileDescriptor_ed7f10298fa1d90f = []byte{
-	// 365 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0xdf, 0x6a, 0xea, 0x40,
-	0x10, 0xc6, 0xfd, 0x77, 0x3c, 0x3a, 0x70, 0xce, 0x91, 0xf5, 0xa8, 0x69, 0x28, 0x45, 0x16, 0x4a,
-	0x05, 0x49, 0x0a, 0xed, 0x13, 0x88, 0x82, 0x78, 0x57, 0xb6, 0xb7, 0xbd, 0x49, 0xc3, 0x20, 0x4b,
-	0x97, 0xdd, 0x34, 0xbb, 0x0a, 0xbe, 0x60, 0x9f, 0xab, 0xb8, 0x1a, 0xad, 0xdb, 0xa4, 0x0d, 0xd2,
-	0xcb, 0xc9, 0x7c, 0xfb, 0x9b, 0x6f, 0x60, 0xbe, 0x40, 0x27, 0x56, 0xd2, 0xa4, 0x4a, 0x08, 0x4c,
-	0xc3, 0x24, 0x55, 0x46, 0x91, 0xfe, 0x32, 0x8d, 0xd6, 0xdc, 0x6c, 0xc2, 0x28, 0xe1, 0xe1, 0xb1,
-	0x4b, 0x07, 0xd0, 0x9b, 0xa3, 0x99, 0x0a, 0x8e, 0xd2, 0x4c, 0xd5, 0x4a, 0x1a, 0x86, 0xaf, 0x2b,
-	0xd4, 0x86, 0x8e, 0xa1, 0xeb, 0x36, 0x12, 0xb1, 0x21, 0xff, 0xe1, 0x57, 0xbc, 0xad, 0xbc, 0xea,
-	0xb0, 0x3a, 0x6a, 0xb0, 0x5d, 0x41, 0x2f, 0x60, 0x30, 0x47, 0xf3, 0xc0, 0x13, 0x14, 0x5c, 0xe2,
-	0x09, 0x27, 0xb0, 0x03, 0x9c, 0x56, 0x31, 0x29, 0x80, 0x7f, 0x0c, 0x97, 0x5c, 0x1b, 0x4c, 0xf7,
-	0x04, 0xe2, 0x43, 0x2b, 0xb6, 0x36, 0x16, 0x33, 0xab, 0x6d, 0xb3, 0x43, 0x4d, 0x27, 0xf0, 0xe7,
-	0x28, 0xdf, 0x52, 0x3d, 0xf8, 0xad, 0x57, 0x71, 0x8c, 0x5a, 0x5b, 0x6d, 0x8b, 0x65, 0x25, 0xe9,
-	0x43, 0x33, 0xc5, 0x48, 0x2b, 0xe9, 0xd5, 0x2c, 0x64, 0x5f, 0xd1, 0x47, 0x18, 0x30, 0x14, 0x18,
-	0x69, 0xcc, 0x4c, 0xea, 0x12, 0x93, 0xc9, 0x25, 0xb4, 0x93, 0x4c, 0xef, 0xd5, 0x86, 0xf5, 0x51,
-	0x83, 0x1d, 0x3f, 0xd0, 0x05, 0xf4, 0x3e, 0x43, 0xcf, 0xf5, 0xd7, 0x9b, 0x68, 0xcd, 0x97, 0x32,
-	0x23, 0x95, 0x71, 0x77, 0x05, 0x90, 0x99, 0x59, 0xcc, 0x2c, 0xb0, 0xc1, 0x3e, 0x7c, 0xa1, 0x73,
-	0xe8, 0xba, 0xd0, 0xb3, 0xdd, 0x31, 0x5c, 0xab, 0x17, 0xfc, 0x61, 0x77, 0x2e, 0xf4, 0x2c, 0x77,
-	0x77, 0x6f, 0x75, 0x80, 0xe9, 0xe1, 0xd8, 0x89, 0x84, 0xbf, 0xa7, 0x37, 0x4d, 0x82, 0x30, 0x3f,
-	0x17, 0x61, 0x6e, 0x28, 0xfc, 0x71, 0x59, 0x79, 0x22, 0x36, 0xb4, 0x42, 0x0c, 0x74, 0xdc, 0xdb,
-	0x27, 0xb7, 0x5f, 0x20, 0xf2, 0x02, 0xe4, 0x07, 0xe5, 0x1f, 0xec, 0xa6, 0x3e, 0x41, 0x2b, 0xcb,
-	0x04, 0xb9, 0x29, 0x7a, 0xec, 0x84, 0xcc, 0xbf, 0xfe, 0x5e, 0x78, 0xd8, 0xc9, 0xbd, 0xec, 0xe2,
-	0x9d, 0x0a, 0x82, 0x55, 0xbc, 0x53, 0x6e, 0x68, 0x68, 0xe5, 0xb9, 0x69, 0xff, 0x62, 0xf7, 0xef,
-	0x01, 0x00, 0x00, 0xff, 0xff, 0x68, 0xb4, 0xbb, 0x37, 0xd9, 0x04, 0x00, 0x00,
+	// 393 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x94, 0x51, 0x4b, 0xc2, 0x50,
+	0x14, 0xc7, 0xd5, 0x96, 0xe9, 0x81, 0xd2, 0xae, 0xa9, 0x6b, 0x44, 0xc8, 0x85, 0xd0, 0x90, 0x4d,
+	0xa8, 0x4f, 0x20, 0x13, 0xc4, 0xb7, 0xb8, 0xd1, 0x5b, 0x2f, 0x73, 0x1c, 0x64, 0x34, 0xee, 0xd6,
+	0xee, 0x55, 0xf0, 0x2b, 0xf5, 0x29, 0xc3, 0xe9, 0x9c, 0xce, 0xad, 0xd6, 0xe8, 0xf1, 0xdc, 0xf3,
+	0x3f, 0xff, 0xf3, 0xe7, 0xc0, 0xef, 0x42, 0xd3, 0xf6, 0xb8, 0x0c, 0x3c, 0xd7, 0xc5, 0xc0, 0xf0,
+	0x03, 0x4f, 0x7a, 0xa4, 0xb3, 0x08, 0xac, 0x95, 0x23, 0xd7, 0x86, 0xe5, 0x3b, 0x46, 0xdc, 0xa5,
+	0x5d, 0x68, 0x4f, 0x51, 0x9a, 0xae, 0x83, 0x5c, 0x9a, 0xde, 0x92, 0x4b, 0x86, 0x9f, 0x4b, 0x14,
+	0x92, 0x0e, 0xa1, 0x95, 0x6c, 0xf8, 0xee, 0x9a, 0xdc, 0xc0, 0xb9, 0xbd, 0xa9, 0xd4, 0x72, 0xaf,
+	0x3c, 0x50, 0xd8, 0xb6, 0xa0, 0xb7, 0xd0, 0x9d, 0xa2, 0x7c, 0x71, 0x7c, 0x74, 0x1d, 0x8e, 0x47,
+	0x3e, 0x7a, 0xb8, 0x20, 0xd1, 0xca, 0x76, 0xd2, 0xa1, 0xc1, 0x70, 0xe1, 0x08, 0x89, 0xc1, 0xce,
+	0x81, 0x68, 0x50, 0xb3, 0xc3, 0x18, 0xb3, 0x49, 0xa8, 0xad, 0xb3, 0x7d, 0x4d, 0xc7, 0x70, 0x19,
+	0xcb, 0x37, 0xae, 0x2a, 0x5c, 0x88, 0xa5, 0x6d, 0xa3, 0x10, 0xa1, 0xb6, 0xc6, 0xa2, 0x92, 0x74,
+	0xa0, 0x1a, 0xa0, 0x25, 0x3c, 0xae, 0x56, 0x42, 0x93, 0x5d, 0x45, 0x47, 0x70, 0xfd, 0xc6, 0x83,
+	0x3f, 0xec, 0x34, 0xa1, 0x71, 0x38, 0x50, 0x6c, 0xeb, 0x2b, 0x74, 0x19, 0xba, 0x68, 0x09, 0x8c,
+	0x4e, 0x23, 0x72, 0xec, 0x26, 0x77, 0x50, 0xf7, 0x23, 0xbd, 0x5a, 0xe9, 0x9d, 0x0d, 0x14, 0x16,
+	0x3f, 0xd0, 0x19, 0xb4, 0x4f, 0x4d, 0x8b, 0xe6, 0x6b, 0x8f, 0x85, 0x70, 0x16, 0x3c, 0x72, 0xca,
+	0x93, 0xee, 0x1e, 0x20, 0x0a, 0x33, 0x9b, 0x84, 0x86, 0x0a, 0x3b, 0x78, 0xa1, 0x53, 0x68, 0x25,
+	0x4d, 0x0b, 0xa7, 0x63, 0xb8, 0xf2, 0x3e, 0xf0, 0x9f, 0xd3, 0x25, 0x4d, 0x0b, 0xa5, 0x7b, 0xfa,
+	0x52, 0x00, 0xcc, 0x3d, 0x62, 0x84, 0xc3, 0xd5, 0x31, 0x49, 0x44, 0x37, 0xd2, 0x69, 0x34, 0x52,
+	0x51, 0xd4, 0x86, 0x79, 0xe5, 0xbe, 0xbb, 0xa6, 0x25, 0x22, 0xa1, 0x99, 0x24, 0x8e, 0x8c, 0x7e,
+	0xb0, 0x48, 0xc3, 0x56, 0xd3, 0xf3, 0x0f, 0x6c, 0xb7, 0xbe, 0x43, 0x2d, 0x22, 0x91, 0xf4, 0xb3,
+	0x86, 0x13, 0x68, 0x6b, 0x0f, 0xbf, 0x0b, 0xb7, 0xee, 0x73, 0x80, 0x98, 0x39, 0xf2, 0x98, 0x35,
+	0x76, 0x02, 0xb2, 0xd6, 0xcf, 0x23, 0xdd, 0xdf, 0x2d, 0x49, 0x4f, 0xf6, 0xdd, 0x32, 0xe0, 0xcd,
+	0xbe, 0x5b, 0x2a, 0x98, 0xb4, 0x34, 0xaf, 0x86, 0xff, 0xf3, 0xf3, 0x77, 0x00, 0x00, 0x00, 0xff,
+	0xff, 0xe7, 0x30, 0x77, 0x6c, 0xb3, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -591,6 +681,7 @@ type ControllerClient interface {
 	GetClientCount(ctx context.Context, in *GetClientCountRequest, opts ...grpc.CallOption) (*GetClientCountReply, error)
 	GetPipelineCount(ctx context.Context, in *GetPipelineCountRequest, opts ...grpc.CallOption) (*GetPipelineCountReply, error)
 	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterReply, error)
+	Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*UnregisterReply, error)
 	ReleasePipelines(ctx context.Context, in *ReleasePipelinesRequest, opts ...grpc.CallOption) (*ReleasePipelinesReply, error)
 }
 
@@ -629,6 +720,15 @@ func (c *controllerClient) Register(ctx context.Context, in *RegisterRequest, op
 	return out, nil
 }
 
+func (c *controllerClient) Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*UnregisterReply, error) {
+	out := new(UnregisterReply)
+	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/Unregister", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
 func (c *controllerClient) ReleasePipelines(ctx context.Context, in *ReleasePipelinesRequest, opts ...grpc.CallOption) (*ReleasePipelinesReply, error) {
 	out := new(ReleasePipelinesReply)
 	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/ReleasePipelines", in, out, opts...)
@@ -643,6 +743,7 @@ type ControllerServer interface {
 	GetClientCount(context.Context, *GetClientCountRequest) (*GetClientCountReply, error)
 	GetPipelineCount(context.Context, *GetPipelineCountRequest) (*GetPipelineCountReply, error)
 	Register(context.Context, *RegisterRequest) (*RegisterReply, error)
+	Unregister(context.Context, *UnregisterRequest) (*UnregisterReply, error)
 	ReleasePipelines(context.Context, *ReleasePipelinesRequest) (*ReleasePipelinesReply, error)
 }
 
@@ -658,6 +759,9 @@ func (*UnimplementedControllerServer) GetPipelineCount(ctx context.Context, req 
 }
 func (*UnimplementedControllerServer) Register(ctx context.Context, req *RegisterRequest) (*RegisterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
+}
+func (*UnimplementedControllerServer) Unregister(ctx context.Context, req *UnregisterRequest) (*UnregisterReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Unregister not implemented")
 }
 func (*UnimplementedControllerServer) ReleasePipelines(ctx context.Context, req *ReleasePipelinesRequest) (*ReleasePipelinesReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ReleasePipelines not implemented")
@@ -721,6 +825,24 @@ func _Controller_Register_Handler(srv interface{}, ctx context.Context, dec func
 	return interceptor(ctx, in, info, handler)
 }
 
+func _Controller_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(UnregisterRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(ControllerServer).Unregister(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gravity.api.controller.Controller/Unregister",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(ControllerServer).Unregister(ctx, req.(*UnregisterRequest))
+	}
+	return interceptor(ctx, in, info, handler)
+}
+
 func _Controller_ReleasePipelines_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ReleasePipelinesRequest)
 	if err := dec(in); err != nil {
@@ -754,6 +876,10 @@ var _Controller_serviceDesc = grpc.ServiceDesc{
 		{
 			MethodName: "Register",
 			Handler:    _Controller_Register_Handler,
+		},
+		{
+			MethodName: "Unregister",
+			Handler:    _Controller_Unregister_Handler,
 		},
 		{
 			MethodName: "ReleasePipelines",
