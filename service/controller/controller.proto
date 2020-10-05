@@ -8,6 +8,7 @@ service Controller {
   rpc Register(RegisterRequest) returns (RegisterReply) {}
   rpc Unregister(UnregisterRequest) returns (UnregisterReply) {}
   rpc ReleasePipelines(ReleasePipelinesRequest) returns (ReleasePipelinesReply) {}
+  rpc GetPipelines(GetPipelinesRequest) returns (GetPipelinesReply) {}
 }
 
 message GetClientCountRequest {
@@ -52,3 +53,12 @@ message ReleasePipelinesReply {
   string reason = 2;
   repeated uint64 failures = 3;
 }
+
+message GetPipelinesRequest {
+  string clientID = 1;
+}
+
+message GetPipelinesReply {
+  repeated uint64 pipelines = 1;
+}
+
