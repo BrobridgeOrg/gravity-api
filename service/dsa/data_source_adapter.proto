@@ -8,7 +8,7 @@ service DataSourceAdapter {
 
 message PublishRequest {
   string eventName = 1;
-  string payload = 2;
+  bytes payload = 2;
 }
 
 message PublishReply {

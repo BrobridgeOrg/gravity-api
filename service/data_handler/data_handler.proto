@@ -8,7 +8,7 @@ service DataHandler {
 
 message PushRequest {
   string eventName = 1;
-  string payload = 2;
+  bytes payload = 2;
 }
 
 message PushReply {
