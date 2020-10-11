@@ -9,3 +9,11 @@ Change working directory then run command in the following:
 ```
 protoc --go_out=plugins=grpc:. *.proto
 ```
+
+## License
+
+Licensed under the MIT License
+
+## Authors
+
+Copyright(c) 2020 Fred Chien <<fred@brobridge.com>>
