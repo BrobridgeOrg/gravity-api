@@ -4,6 +4,7 @@ package gravity.api.dsa;
 
 service DataSourceAdapter {
   rpc Publish(PublishRequest) returns (PublishReply) {}
+  rpc PublishEvents(stream PublishRequest) returns (PublishReply) {}
 }
 
 message PublishRequest {
