@@ -4,6 +4,7 @@ package gravity.api.data_handler;
 
 service DataHandler {
   rpc Push(PushRequest) returns (PushReply) {}
+  rpc PushStream(stream PushRequest) returns (PushReply) {}
 }
 
 message PushRequest {
