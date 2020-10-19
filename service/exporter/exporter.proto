@@ -4,6 +4,7 @@ package gravity.api.exporter;
 
 service Exporter {
   rpc SendEvent(SendEventRequest) returns (SendEventReply) {}
+  rpc SendEventStream(stream SendEventRequest) returns (SendEventReply) {}
 }
 
 message SendEventRequest {
