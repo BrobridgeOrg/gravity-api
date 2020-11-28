@@ -11,6 +11,7 @@ enum Method {
   INSERT = 0;
   UPDATE = 1;
   DELETE = 2;
+  TRUNCATE = 3;
 }
 
 enum DataType {
