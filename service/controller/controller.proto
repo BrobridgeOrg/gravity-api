@@ -9,6 +9,8 @@ service Controller {
   rpc Unregister(UnregisterRequest) returns (UnregisterReply) {}
   rpc ReleasePipelines(ReleasePipelinesRequest) returns (ReleasePipelinesReply) {}
   rpc GetPipelines(GetPipelinesRequest) returns (GetPipelinesReply) {}
+  rpc RegisterAdapter(RegisterAdapterRequest) returns (RegisterAdapterReply) {}
+  rpc UnregisterAdapter(UnregisterAdapterRequest) returns (UnregisterAdapterReply) {}
 }
 
 message GetClientCountRequest {
@@ -60,5 +62,25 @@ message GetPipelinesRequest {
 
 message GetPipelinesReply {
   repeated uint64 pipelines = 1;
+}
+
+message RegisterAdapterRequest {
+  string clientID = 1;
+  string url = 2;
+  int64 offset = 3;
+}
+
+message RegisterAdapterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterAdapterRequest {
+  string clientID = 1;
+}
+
+message UnregisterAdapterReply {
+  bool success = 1;
+  string reason = 2;
 }
 
