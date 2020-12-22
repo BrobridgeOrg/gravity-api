@@ -8,7 +8,7 @@ service Adapter {
 }
 
 message SendEventRequest {
-  string channel = 1;
+  string eventName = 1;
   bytes payload = 2;
 }
 
