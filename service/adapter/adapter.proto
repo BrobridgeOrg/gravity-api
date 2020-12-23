@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package gravity.api.adapter;
+
+service Adapter {
+  rpc SendEvent(SendEventRequest) returns (SendEventReply) {}
+  rpc SendEventStream(stream SendEventRequest) returns (SendEventReply) {}
+}
+
+message SendEventRequest {
+  string eventName = 1;
+  bytes payload = 2;
+}
+
+message SendEventReply {
+  bool success = 1;
+  string reason = 2;
+}
