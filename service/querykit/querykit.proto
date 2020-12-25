@@ -23,6 +23,8 @@ enum Operator {
   GREATER_EQUAL = 2;
   LESS_THAN = 3;
   LESS_EQUAL = 4;
+  AND = 5;
+  OR = 6;
 }
 
 message Record {
