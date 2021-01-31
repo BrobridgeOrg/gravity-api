@@ -24,10 +24,107 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
+type BatchPublishRequest struct {
+	Requests             []*PublishRequest `protobuf:"bytes,1,rep,name=requests,proto3" json:"requests,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *BatchPublishRequest) Reset()         { *m = BatchPublishRequest{} }
+func (m *BatchPublishRequest) String() string { return proto.CompactTextString(m) }
+func (*BatchPublishRequest) ProtoMessage()    {}
+func (*BatchPublishRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_102a39ffe4b3d003, []int{0}
+}
+
+func (m *BatchPublishRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BatchPublishRequest.Unmarshal(m, b)
+}
+func (m *BatchPublishRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BatchPublishRequest.Marshal(b, m, deterministic)
+}
+func (m *BatchPublishRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchPublishRequest.Merge(m, src)
+}
+func (m *BatchPublishRequest) XXX_Size() int {
+	return xxx_messageInfo_BatchPublishRequest.Size(m)
+}
+func (m *BatchPublishRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchPublishRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchPublishRequest proto.InternalMessageInfo
+
+func (m *BatchPublishRequest) GetRequests() []*PublishRequest {
+	if m != nil {
+		return m.Requests
+	}
+	return nil
+}
+
+type BatchPublishReply struct {
+	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	SuccessCount         int32    `protobuf:"varint,2,opt,name=successCount,proto3" json:"successCount,omitempty"`
+	Reason               string   `protobuf:"bytes,3,opt,name=reason,proto3" json:"reason,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *BatchPublishReply) Reset()         { *m = BatchPublishReply{} }
+func (m *BatchPublishReply) String() string { return proto.CompactTextString(m) }
+func (*BatchPublishReply) ProtoMessage()    {}
+func (*BatchPublishReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_102a39ffe4b3d003, []int{1}
+}
+
+func (m *BatchPublishReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_BatchPublishReply.Unmarshal(m, b)
+}
+func (m *BatchPublishReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_BatchPublishReply.Marshal(b, m, deterministic)
+}
+func (m *BatchPublishReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_BatchPublishReply.Merge(m, src)
+}
+func (m *BatchPublishReply) XXX_Size() int {
+	return xxx_messageInfo_BatchPublishReply.Size(m)
+}
+func (m *BatchPublishReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_BatchPublishReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_BatchPublishReply proto.InternalMessageInfo
+
+func (m *BatchPublishReply) GetSuccess() bool {
+	if m != nil {
+		return m.Success
+	}
+	return false
+}
+
+func (m *BatchPublishReply) GetSuccessCount() int32 {
+	if m != nil {
+		return m.SuccessCount
+	}
+	return 0
+}
+
+func (m *BatchPublishReply) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
+}
+
 type PublishRequest struct {
 	EventName            string            `protobuf:"bytes,1,opt,name=eventName,proto3" json:"eventName,omitempty"`
 	Payload              []byte            `protobuf:"bytes,2,opt,name=payload,proto3" json:"payload,omitempty"`
 	Meta                 map[string][]byte `protobuf:"bytes,3,rep,name=meta,proto3" json:"meta,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	Source               string            `protobuf:"bytes,4,opt,name=source,proto3" json:"source,omitempty"`
+	Partition            int32             `protobuf:"varint,5,opt,name=partition,proto3" json:"partition,omitempty"`
+	Offset               int32             `protobuf:"varint,6,opt,name=offset,proto3" json:"offset,omitempty"`
 	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
 	XXX_unrecognized     []byte            `json:"-"`
 	XXX_sizecache        int32             `json:"-"`
@@ -37,7 +134,7 @@ func (m *PublishRequest) Reset()         { *m = PublishRequest{} }
 func (m *PublishRequest) String() string { return proto.CompactTextString(m) }
 func (*PublishRequest) ProtoMessage()    {}
 func (*PublishRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_102a39ffe4b3d003, []int{0}
+	return fileDescriptor_102a39ffe4b3d003, []int{2}
 }
 
 func (m *PublishRequest) XXX_Unmarshal(b []byte) error {
@@ -79,6 +176,27 @@ func (m *PublishRequest) GetMeta() map[string][]byte {
 	return nil
 }
 
+func (m *PublishRequest) GetSource() string {
+	if m != nil {
+		return m.Source
+	}
+	return ""
+}
+
+func (m *PublishRequest) GetPartition() int32 {
+	if m != nil {
+		return m.Partition
+	}
+	return 0
+}
+
+func (m *PublishRequest) GetOffset() int32 {
+	if m != nil {
+		return m.Offset
+	}
+	return 0
+}
+
 type PublishReply struct {
 	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
@@ -91,7 +209,7 @@ func (m *PublishReply) Reset()         { *m = PublishReply{} }
 func (m *PublishReply) String() string { return proto.CompactTextString(m) }
 func (*PublishReply) ProtoMessage()    {}
 func (*PublishReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_102a39ffe4b3d003, []int{1}
+	return fileDescriptor_102a39ffe4b3d003, []int{3}
 }
 
 func (m *PublishReply) XXX_Unmarshal(b []byte) error {
@@ -127,6 +245,8 @@ func (m *PublishReply) GetReason() string {
 }
 
 func init() {
+	proto.RegisterType((*BatchPublishRequest)(nil), "gravity.api.dsa.BatchPublishRequest")
+	proto.RegisterType((*BatchPublishReply)(nil), "gravity.api.dsa.BatchPublishReply")
 	proto.RegisterType((*PublishRequest)(nil), "gravity.api.dsa.PublishRequest")
 	proto.RegisterMapType((map[string][]byte)(nil), "gravity.api.dsa.PublishRequest.MetaEntry")
 	proto.RegisterType((*PublishReply)(nil), "gravity.api.dsa.PublishReply")
@@ -135,25 +255,32 @@ func init() {
 func init() { proto.RegisterFile("data_source_adapter.proto", fileDescriptor_102a39ffe4b3d003) }
 
 var fileDescriptor_102a39ffe4b3d003 = []byte{
-	// 287 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x91, 0x5f, 0x4b, 0xc3, 0x30,
-	0x14, 0xc5, 0xcd, 0xa6, 0x9b, 0xbd, 0xce, 0x7f, 0x41, 0xa4, 0x0e, 0xc5, 0xd2, 0xa7, 0xfa, 0x92,
-	0x87, 0xf9, 0xa0, 0x08, 0x82, 0x82, 0x7b, 0x12, 0x45, 0xb2, 0x0f, 0x30, 0xee, 0xda, 0x8b, 0x16,
-	0xbb, 0x36, 0x26, 0x69, 0x21, 0x1f, 0xcc, 0x77, 0x3f, 0x9a, 0xb4, 0xeb, 0x26, 0x0a, 0xe2, 0x83,
-	0x6f, 0x39, 0x87, 0xdc, 0xf3, 0x4b, 0xce, 0x85, 0xa3, 0x04, 0x2d, 0x4e, 0x4d, 0x51, 0xea, 0x98,
-	0xa6, 0x98, 0xa0, 0xb2, 0xa4, 0x85, 0xd2, 0x85, 0x2d, 0xf8, 0xee, 0xb3, 0xc6, 0x2a, 0xb5, 0x4e,
-	0xa0, 0x4a, 0x45, 0x62, 0x30, 0xfc, 0x60, 0xb0, 0xf3, 0x54, 0xce, 0xb2, 0xd4, 0xbc, 0x48, 0x7a,
-	0x2b, 0xc9, 0x58, 0x7e, 0x0c, 0x1e, 0x55, 0x94, 0xdb, 0x47, 0x9c, 0x93, 0xcf, 0x02, 0x16, 0x79,
-	0xf2, 0xcb, 0xe0, 0x3e, 0xf4, 0x15, 0xba, 0xac, 0xc0, 0xc4, 0xef, 0x04, 0x2c, 0x1a, 0xc8, 0xa5,
-	0xe4, 0xd7, 0xb0, 0x3e, 0x27, 0x8b, 0x7e, 0x37, 0xe8, 0x46, 0x5b, 0xa3, 0x33, 0xf1, 0x03, 0x25,
-	0xbe, 0x63, 0xc4, 0x03, 0x59, 0x1c, 0xe7, 0x56, 0x3b, 0xd9, 0x8c, 0x0d, 0x2f, 0xc0, 0x5b, 0x59,
-	0x7c, 0x0f, 0xba, 0xaf, 0xe4, 0x5a, 0x7a, 0x7d, 0xe4, 0x07, 0xb0, 0x51, 0x61, 0x56, 0x52, 0x4b,
-	0x5d, 0x88, 0xab, 0xce, 0x25, 0x0b, 0x6f, 0x60, 0xb0, 0x8a, 0x56, 0x99, 0xab, 0x5f, 0x68, 0xca,
-	0x38, 0x26, 0x63, 0x9a, 0xf9, 0x4d, 0xb9, 0x94, 0xfc, 0x10, 0x7a, 0x9a, 0xd0, 0x14, 0x79, 0x13,
-	0xe2, 0xc9, 0x56, 0x8d, 0xde, 0x19, 0xec, 0xdf, 0xa1, 0xc5, 0x49, 0x53, 0xd9, 0xed, 0xa2, 0x31,
-	0x7e, 0x0f, 0xfd, 0x36, 0x97, 0x9f, 0xfe, 0xf1, 0x99, 0xe1, 0xc9, 0xef, 0x17, 0x54, 0xe6, 0xc2,
-	0x35, 0x3e, 0x81, 0xed, 0xd6, 0x19, 0xd7, 0x55, 0x9a, 0xff, 0x47, 0x46, 0x6c, 0xd6, 0x6b, 0x96,
-	0x7a, 0xfe, 0x19, 0x00, 0x00, 0xff, 0xff, 0xf0, 0x0a, 0x22, 0x24, 0xf1, 0x01, 0x00, 0x00,
+	// 395 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x53, 0x4d, 0x6b, 0xdb, 0x40,
+	0x10, 0xad, 0x24, 0x7f, 0x69, 0xaa, 0x7e, 0x78, 0x5b, 0xca, 0xd6, 0xb4, 0xd4, 0x88, 0x1e, 0xd4,
+	0x8b, 0x0e, 0xee, 0xa1, 0xa5, 0xa5, 0xd0, 0x2f, 0x9f, 0x4a, 0x43, 0x58, 0xdf, 0x72, 0x31, 0x63,
+	0x69, 0x1d, 0x8b, 0xc8, 0x5a, 0x65, 0x77, 0x65, 0xd0, 0x9f, 0x08, 0xe4, 0x1f, 0x07, 0xad, 0xe4,
+	0xcf, 0x24, 0x38, 0x90, 0xdb, 0xbe, 0xd1, 0xce, 0x9b, 0xf7, 0xde, 0x8e, 0xe0, 0x6d, 0x8c, 0x1a,
+	0xa7, 0x4a, 0x14, 0x32, 0xe2, 0x53, 0x8c, 0x31, 0xd7, 0x5c, 0x86, 0xb9, 0x14, 0x5a, 0x90, 0x17,
+	0xe7, 0x12, 0x57, 0x89, 0x2e, 0x43, 0xcc, 0x93, 0x30, 0x56, 0xe8, 0x33, 0x78, 0xf5, 0x1b, 0x75,
+	0xb4, 0x38, 0x2d, 0x66, 0x69, 0xa2, 0x16, 0x8c, 0x5f, 0x16, 0x5c, 0x69, 0xf2, 0x1d, 0x7a, 0xb2,
+	0x3e, 0x2a, 0x6a, 0x0d, 0x9d, 0xe0, 0xe9, 0xe8, 0x43, 0x78, 0xd0, 0x1a, 0xee, 0xb7, 0xb0, 0x4d,
+	0x83, 0x9f, 0x40, 0x7f, 0x9f, 0x33, 0x4f, 0x4b, 0x42, 0xa1, 0xab, 0x8a, 0x28, 0xe2, 0xaa, 0x22,
+	0xb4, 0x82, 0x1e, 0x5b, 0x43, 0xe2, 0x83, 0xd7, 0x1c, 0xff, 0x88, 0x22, 0xd3, 0xd4, 0x1e, 0x5a,
+	0x41, 0x9b, 0xed, 0xd5, 0xc8, 0x1b, 0xe8, 0x48, 0x8e, 0x4a, 0x64, 0xd4, 0x19, 0x5a, 0x81, 0xcb,
+	0x1a, 0xe4, 0x5f, 0xd9, 0xf0, 0xfc, 0x40, 0xfa, 0x3b, 0x70, 0xf9, 0x8a, 0x67, 0xfa, 0x04, 0x97,
+	0xdc, 0x8c, 0x72, 0xd9, 0xb6, 0x50, 0xc9, 0xc8, 0xb1, 0x4c, 0x05, 0xc6, 0x66, 0x8e, 0xc7, 0xd6,
+	0x90, 0xfc, 0x80, 0xd6, 0x92, 0x6b, 0xa4, 0x8e, 0xb1, 0xfb, 0xe9, 0x88, 0xdd, 0xf0, 0x3f, 0xd7,
+	0x38, 0xce, 0xb4, 0x2c, 0x99, 0x69, 0xab, 0x14, 0xd6, 0x89, 0xd3, 0x56, 0xad, 0xb0, 0x46, 0x95,
+	0x9c, 0x1c, 0xa5, 0x4e, 0x74, 0x22, 0x32, 0xda, 0x36, 0xd6, 0xb6, 0x85, 0xaa, 0x4b, 0xcc, 0xe7,
+	0x8a, 0x6b, 0xda, 0x31, 0x9f, 0x1a, 0x34, 0xf8, 0x02, 0xee, 0x66, 0x00, 0x79, 0x09, 0xce, 0x05,
+	0x2f, 0x1b, 0x2f, 0xd5, 0x91, 0xbc, 0x86, 0xf6, 0x0a, 0xd3, 0x82, 0x37, 0x1e, 0x6a, 0xf0, 0xcd,
+	0xfe, 0x6a, 0xf9, 0x3f, 0xc1, 0x7b, 0x60, 0xec, 0xdb, 0x48, 0xed, 0xdd, 0x48, 0x47, 0xd7, 0x36,
+	0xf4, 0xff, 0xa2, 0xc6, 0x89, 0xd1, 0xff, 0xab, 0x5e, 0x1f, 0x72, 0x06, 0xde, 0xee, 0x9b, 0x92,
+	0x8f, 0xb7, 0xf2, 0xb9, 0x63, 0x8d, 0x06, 0xfe, 0x91, 0x5b, 0x79, 0x5a, 0xfa, 0x4f, 0xc8, 0x3f,
+	0xe8, 0xae, 0x69, 0x8f, 0x6d, 0xd9, 0xe0, 0xfd, 0xfd, 0x17, 0x6a, 0xb2, 0x09, 0x3c, 0x6b, 0x2a,
+	0xe3, 0xea, 0xd1, 0xd5, 0xe3, 0x29, 0x03, 0x6b, 0xd6, 0x31, 0x7f, 0xcf, 0xe7, 0x9b, 0x00, 0x00,
+	0x00, 0xff, 0xff, 0xd3, 0x05, 0xe6, 0x50, 0x5a, 0x03, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -168,6 +295,7 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type DataSourceAdapterClient interface {
+	BatchPublish(ctx context.Context, in *BatchPublishRequest, opts ...grpc.CallOption) (*BatchPublishReply, error)
 	Publish(ctx context.Context, in *PublishRequest, opts ...grpc.CallOption) (*PublishReply, error)
 	PublishEvents(ctx context.Context, opts ...grpc.CallOption) (DataSourceAdapter_PublishEventsClient, error)
 }
@@ -178,6 +306,15 @@ type dataSourceAdapterClient struct {
 
 func NewDataSourceAdapterClient(cc *grpc.ClientConn) DataSourceAdapterClient {
 	return &dataSourceAdapterClient{cc}
+}
+
+func (c *dataSourceAdapterClient) BatchPublish(ctx context.Context, in *BatchPublishRequest, opts ...grpc.CallOption) (*BatchPublishReply, error) {
+	out := new(BatchPublishReply)
+	err := c.cc.Invoke(ctx, "/gravity.api.dsa.DataSourceAdapter/BatchPublish", in, out, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
 }
 
 func (c *dataSourceAdapterClient) Publish(ctx context.Context, in *PublishRequest, opts ...grpc.CallOption) (*PublishReply, error) {
@@ -225,6 +362,7 @@ func (x *dataSourceAdapterPublishEventsClient) CloseAndRecv() (*PublishReply, er
 
 // DataSourceAdapterServer is the server API for DataSourceAdapter service.
 type DataSourceAdapterServer interface {
+	BatchPublish(context.Context, *BatchPublishRequest) (*BatchPublishReply, error)
 	Publish(context.Context, *PublishRequest) (*PublishReply, error)
 	PublishEvents(DataSourceAdapter_PublishEventsServer) error
 }
@@ -233,6 +371,9 @@ type DataSourceAdapterServer interface {
 type UnimplementedDataSourceAdapterServer struct {
 }
 
+func (*UnimplementedDataSourceAdapterServer) BatchPublish(ctx context.Context, req *BatchPublishRequest) (*BatchPublishReply, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method BatchPublish not implemented")
+}
 func (*UnimplementedDataSourceAdapterServer) Publish(ctx context.Context, req *PublishRequest) (*PublishReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method Publish not implemented")
 }
@@ -242,6 +383,24 @@ func (*UnimplementedDataSourceAdapterServer) PublishEvents(srv DataSourceAdapter
 
 func RegisterDataSourceAdapterServer(s *grpc.Server, srv DataSourceAdapterServer) {
 	s.RegisterService(&_DataSourceAdapter_serviceDesc, srv)
+}
+
+func _DataSourceAdapter_BatchPublish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(BatchPublishRequest)
+	if err := dec(in); err != nil {
+		return nil, err
+	}
+	if interceptor == nil {
+		return srv.(DataSourceAdapterServer).BatchPublish(ctx, in)
+	}
+	info := &grpc.UnaryServerInfo{
+		Server:     srv,
+		FullMethod: "/gravity.api.dsa.DataSourceAdapter/BatchPublish",
+	}
+	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
+		return srv.(DataSourceAdapterServer).BatchPublish(ctx, req.(*BatchPublishRequest))
+	}
+	return interceptor(ctx, in, info, handler)
 }
 
 func _DataSourceAdapter_Publish_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
@@ -292,6 +451,10 @@ var _DataSourceAdapter_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "gravity.api.dsa.DataSourceAdapter",
 	HandlerType: (*DataSourceAdapterServer)(nil),
 	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "BatchPublish",
+			Handler:    _DataSourceAdapter_BatchPublish_Handler,
+		},
 		{
 			MethodName: "Publish",
 			Handler:    _DataSourceAdapter_Publish_Handler,

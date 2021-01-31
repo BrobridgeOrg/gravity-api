@@ -3,14 +3,28 @@ syntax = "proto3";
 package gravity.api.dsa;
 
 service DataSourceAdapter {
+  rpc BatchPublish(BatchPublishRequest) returns (BatchPublishReply) {}
   rpc Publish(PublishRequest) returns (PublishReply) {}
   rpc PublishEvents(stream PublishRequest) returns (PublishReply) {}
+}
+
+message BatchPublishRequest {
+  repeated PublishRequest requests = 1;
+}
+
+message BatchPublishReply {
+  bool success = 1;
+  int32 successCount = 2;
+  string reason = 3;
 }
 
 message PublishRequest {
   string eventName = 1;
   bytes payload = 2;
   map<string, bytes> meta = 3;
+  string source = 4;
+  int32 partition = 5;
+  int32 offset = 6;
 }
 
 message PublishReply {
