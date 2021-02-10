@@ -25,6 +25,7 @@ enum Operator {
   LESS_EQUAL = 4;
   AND = 5;
   OR = 6;
+  NOT_EQUAL = 7;
 }
 
 message Record {
