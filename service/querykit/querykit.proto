@@ -26,6 +26,7 @@ enum Operator {
   AND = 5;
   OR = 6;
   NOT_EQUAL = 7;
+  IS_EXIST = 8;
 }
 
 message Record {
