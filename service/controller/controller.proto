@@ -11,6 +11,8 @@ service Controller {
   rpc GetPipelines(GetPipelinesRequest) returns (GetPipelinesReply) {}
   rpc RegisterAdapter(RegisterAdapterRequest) returns (RegisterAdapterReply) {}
   rpc UnregisterAdapter(UnregisterAdapterRequest) returns (UnregisterAdapterReply) {}
+  rpc GetDestinations(GetDestinationsRequest) returns (GetDestinationsReply) {}
+  rpc Resync(ResyncRequest) returns (ResyncReply) {}
 }
 
 message GetClientCountRequest {
@@ -18,6 +20,12 @@ message GetClientCountRequest {
 
 message GetClientCountReply {
   uint64 count = 1;
+}
+
+message Pipeline {
+  uint64 id = 1;
+  uint64 sequenece = 2;
+  uint64 timestamp = 3;
 }
 
 message GetPipelineCountRequest {
@@ -84,3 +92,27 @@ message UnregisterAdapterReply {
   string reason = 2;
 }
 
+message ResyncRequest {
+  string destinationName = 1;
+}
+
+message ResyncReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message Destination {
+  string name = 1;
+  string host = 2;
+  int32 port = 3;
+  repeated Pipeline pipelines = 4;
+}
+
+message GetDestinationsRequest {
+}
+
+message GetDestinationsReply {
+  bool success = 1;
+  string reason = 2;
+  repeated Destination destinations = 3;
+}
