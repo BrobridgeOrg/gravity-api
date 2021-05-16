@@ -24,3 +24,67 @@ message RevokePipelineReply {
   bool success = 1;
   string reason = 2;
 }
+
+message RegisterSubscriberRequest {
+  string subscriberID = 1;
+  string Name = 2;
+}
+
+message RegisterSubscriberReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterSubscriberRequest {
+  string subscriberID = 1;
+}
+
+message UnregisterSubscriberReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message SubscribeToCollectionsRequest {
+  string subscriberID = 1;
+  repeated string Collections = 2;
+}
+
+message SubscribeToCollectionsReply {
+  bool success = 1;
+  string reason = 2;
+  repeated string Collections = 3;
+}
+
+message UnsubscribeFromCollectionsRequest {
+  string subscriberID = 1;
+  repeated string collections = 2;
+}
+
+message UnsubscribeFromCollectionsReply {
+  repeated string collections = 1;
+}
+
+message GetPipelineStateRequest {
+  string pipelineID = 1;
+}
+
+message GetPipelineStateReply {
+  bool success = 1;
+  string reason = 2;
+  uint64 lastSeq = 3;
+}
+
+message PipelineFetchRequest {
+  string subscriberID = 1;
+  uint64 pipelineID = 2;
+  uint64 startAt = 3;
+  uint64 offset = 4;
+  int64 count = 5;
+}
+
+message PipelineFetchReply {
+  bool success = 1;
+  string reason = 2;
+  uint64 count = 3;
+  uint64 lastSeq = 4;
+}
