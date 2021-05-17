@@ -21,7 +21,6 @@ service Controller {
   rpc UnregisterSubscriber(UnregisterSubscriberRequest) returns (UnregisterSubscriberReply) {}
 //  rpc SubscribeToCollections(SubscribeToCollectionsRequest) returns (SubscribeToCollectionsReply) {}
 
-  rpc GetDestinations(GetDestinationsRequest) returns (GetDestinationsReply) {}
   rpc Resync(ResyncRequest) returns (ResyncReply) {}
 }
 
@@ -145,20 +144,4 @@ message ResyncRequest {
 message ResyncReply {
   bool success = 1;
   string reason = 2;
-}
-
-message Destination {
-  string name = 1;
-  string host = 2;
-  int32 port = 3;
-  repeated Pipeline pipelines = 4;
-}
-
-message GetDestinationsRequest {
-}
-
-message GetDestinationsReply {
-  bool success = 1;
-  string reason = 2;
-  repeated Destination destinations = 3;
 }
