@@ -19,7 +19,7 @@ service Controller {
   // Subscriber
   rpc RegisterSubscriber(RegisterSubscriberRequest) returns (RegisterSubscriberReply) {}
   rpc UnregisterSubscriber(UnregisterSubscriberRequest) returns (UnregisterSubscriberReply) {}
-//  rpc SubscribeToCollections(SubscribeToCollectionsRequest) returns (SubscribeToCollectionsReply) {}
+//  rpc GetSubscribers(GetSubscribersRequest) returns (GetSubscribersReply) {}
 
   rpc Resync(ResyncRequest) returns (ResyncReply) {}
 }
@@ -107,14 +107,21 @@ message UnregisterAdapterReply {
 }
 
 // Subscriber
+enum SubscriberType {
+  TRANSMITTER = 0;
+  EXPORTER = 1;
+}
+
 message RegisterSubscriberRequest {
   string subscriberID = 1;
+  string name = 2;
+  SubscriberType type = 3;
+  string component = 4;
 }
 
 message RegisterSubscriberReply {
   bool success = 1;
   string reason = 2;
-  uint64 channel = 3;
 }
 
 message UnregisterSubscriberRequest {

@@ -1,0 +1,45 @@
+syntax = "proto3";
+
+package gravity.api.subscriber_manager;
+
+enum SubscriberType {
+  TRANSMITTER = 0;
+  EXPORTER = 1;
+}
+
+message RegisterSubscriberRequest {
+  string subscriberID = 1;
+  string name = 2;
+  SubscriberType type = 3;
+  string component = 4;
+}
+
+message RegisterSubscriberReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterSubscriberRequest {
+  string subscriberID = 1;
+}
+
+message UnregisterSubscriberReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message Subscriber {
+  string subscriberID = 1;
+  string name = 2;
+  SubscriberType type = 3;
+  string component = 4;
+}
+
+message GetSubscribersRequest {
+}
+
+message GetSubscribersReply {
+  bool success = 1;
+  string reason = 2;
+  repeated Subscriber subscribers = 3;
+}
