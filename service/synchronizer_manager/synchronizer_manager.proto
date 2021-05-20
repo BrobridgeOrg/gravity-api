@@ -1,0 +1,34 @@
+syntax = "proto3";
+
+package gravity.api.synchronizer_manager;
+
+message RegisterSynchronizerRequest {
+  string synchronizerID = 1;
+}
+
+message RegisterSynchronizerReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterSynchronizerRequest {
+  string synchronizerID = 1;
+}
+
+message UnregisterSynchronizerReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message Synchronizer {
+  string synchronizerID = 1;
+}
+
+message GetSynchronizersRequest {
+}
+
+message GetSynchronizersReply {
+  bool success = 1;
+  string reason = 2;
+  repeated Synchronizer synchronizers = 3;
+}
