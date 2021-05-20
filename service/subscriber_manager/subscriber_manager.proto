@@ -43,3 +43,14 @@ message GetSubscribersReply {
   string reason = 2;
   repeated Subscriber subscribers = 3;
 }
+
+message SubscribeToCollectionsRequest {
+  string subscriberID = 1;
+  repeated string collections = 2;
+}
+
+message SubscribeToCollectionsReply {
+  bool success = 1;
+  string reason = 2;
+  repeated string collections = 3;
+}

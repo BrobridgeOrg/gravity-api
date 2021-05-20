@@ -6,7 +6,6 @@ service Controller {
 
   // Core
   rpc GetClientCount(GetClientCountRequest) returns (GetClientCountReply) {}
-  rpc GetPipelineCount(GetPipelineCountRequest) returns (GetPipelineCountReply) {}
 
   // Adapter
   rpc RegisterAdapter(RegisterAdapterRequest) returns (RegisterAdapterReply) {}
@@ -26,15 +25,6 @@ message Pipeline {
   uint64 id = 1;
   uint64 sequenece = 2;
   uint64 timestamp = 3;
-}
-
-message GetPipelineCountRequest {
-}
-
-message GetPipelineCountReply {
-  bool success = 1;
-  string reason = 2;
-  uint64 count = 3;
 }
 
 // Adapter
