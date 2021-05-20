@@ -1,0 +1,12 @@
+syntax = "proto3";
+
+package gravity.api.pipeline_manager;
+
+message GetPipelineCountRequest {
+}
+
+message GetPipelineCountReply {
+  bool success = 1;
+  string reason = 2;
+  uint64 count = 3;
+}
