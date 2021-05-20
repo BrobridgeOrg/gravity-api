@@ -7,21 +7,10 @@ service Controller {
   // Core
   rpc GetClientCount(GetClientCountRequest) returns (GetClientCountReply) {}
   rpc GetPipelineCount(GetPipelineCountRequest) returns (GetPipelineCountReply) {}
-  rpc Register(RegisterRequest) returns (RegisterReply) {}
-  rpc Unregister(UnregisterRequest) returns (UnregisterReply) {}
-  rpc ReleasePipelines(ReleasePipelinesRequest) returns (ReleasePipelinesReply) {}
-  rpc GetPipelines(GetPipelinesRequest) returns (GetPipelinesReply) {}
 
   // Adapter
   rpc RegisterAdapter(RegisterAdapterRequest) returns (RegisterAdapterReply) {}
   rpc UnregisterAdapter(UnregisterAdapterRequest) returns (UnregisterAdapterReply) {}
-
-  // Subscriber
-  rpc RegisterSubscriber(RegisterSubscriberRequest) returns (RegisterSubscriberReply) {}
-  rpc UnregisterSubscriber(UnregisterSubscriberRequest) returns (UnregisterSubscriberReply) {}
-//  rpc GetSubscribers(GetSubscribersRequest) returns (GetSubscribersReply) {}
-
-  rpc Resync(ResyncRequest) returns (ResyncReply) {}
 }
 
 message GetClientCountRequest {
@@ -48,43 +37,6 @@ message GetPipelineCountReply {
   uint64 count = 3;
 }
 
-message RegisterRequest {
-  string clientID = 1;
-}
-
-message RegisterReply {
-  bool success = 1;
-  string reason = 2;
-}
-
-message UnregisterRequest {
-  string clientID = 1;
-}
-
-message UnregisterReply {
-  bool success = 1;
-  string reason = 2;
-}
-
-message ReleasePipelinesRequest {
-  string clientID = 1;
-  repeated uint64 pipelines = 2;
-}
-
-message ReleasePipelinesReply {
-  bool success = 1;
-  string reason = 2;
-  repeated uint64 failures = 3;
-}
-
-message GetPipelinesRequest {
-  string clientID = 1;
-}
-
-message GetPipelinesReply {
-  repeated uint64 pipelines = 1;
-}
-
 // Adapter
 message RegisterAdapterRequest {
   string clientID = 1;
@@ -107,32 +59,6 @@ message UnregisterAdapterReply {
 }
 
 // Subscriber
-enum SubscriberType {
-  TRANSMITTER = 0;
-  EXPORTER = 1;
-}
-
-message RegisterSubscriberRequest {
-  string subscriberID = 1;
-  string name = 2;
-  SubscriberType type = 3;
-  string component = 4;
-}
-
-message RegisterSubscriberReply {
-  bool success = 1;
-  string reason = 2;
-}
-
-message UnregisterSubscriberRequest {
-  string subscriberID = 1;
-}
-
-message UnregisterSubscriberReply {
-  bool success = 1;
-  string reason = 2;
-}
-
 message SubscribeToCollectionsRequest {
   string subscriberID = 1;
   repeated string collections = 2;
@@ -142,13 +68,4 @@ message SubscribeToCollectionsReply {
   bool success = 1;
   string reason = 2;
   repeated string collections = 3;
-}
-
-message ResyncRequest {
-  string destinationName = 1;
-}
-
-message ResyncReply {
-  bool success = 1;
-  string reason = 2;
 }

@@ -32,3 +32,24 @@ message GetSynchronizersReply {
   string reason = 2;
   repeated Synchronizer synchronizers = 3;
 }
+
+message ReleasePipelinesRequest {
+  string synchronizerID = 1;
+  repeated uint64 pipelines = 2;
+}
+
+message ReleasePipelinesReply {
+  bool success = 1;
+  string reason = 2;
+  repeated uint64 failures = 3;
+}
+
+message GetPipelinesRequest {
+  string synchronizerID = 1;
+}
+
+message GetPipelinesReply {
+  bool success = 1;
+  string reason = 2;
+  repeated uint64 pipelines = 3;
+}

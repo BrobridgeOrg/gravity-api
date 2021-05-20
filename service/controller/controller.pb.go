@@ -24,32 +24,6 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion3 // please upgrade the proto package
 
-// Subscriber
-type SubscriberType int32
-
-const (
-	SubscriberType_TRANSMITTER SubscriberType = 0
-	SubscriberType_EXPORTER    SubscriberType = 1
-)
-
-var SubscriberType_name = map[int32]string{
-	0: "TRANSMITTER",
-	1: "EXPORTER",
-}
-
-var SubscriberType_value = map[string]int32{
-	"TRANSMITTER": 0,
-	"EXPORTER":    1,
-}
-
-func (x SubscriberType) String() string {
-	return proto.EnumName(SubscriberType_name, int32(x))
-}
-
-func (SubscriberType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{0}
-}
-
 type GetClientCountRequest struct {
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
@@ -277,358 +251,6 @@ func (m *GetPipelineCountReply) GetCount() uint64 {
 	return 0
 }
 
-type RegisterRequest struct {
-	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RegisterRequest) Reset()         { *m = RegisterRequest{} }
-func (m *RegisterRequest) String() string { return proto.CompactTextString(m) }
-func (*RegisterRequest) ProtoMessage()    {}
-func (*RegisterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{5}
-}
-
-func (m *RegisterRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegisterRequest.Unmarshal(m, b)
-}
-func (m *RegisterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegisterRequest.Marshal(b, m, deterministic)
-}
-func (m *RegisterRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterRequest.Merge(m, src)
-}
-func (m *RegisterRequest) XXX_Size() int {
-	return xxx_messageInfo_RegisterRequest.Size(m)
-}
-func (m *RegisterRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegisterRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegisterRequest proto.InternalMessageInfo
-
-func (m *RegisterRequest) GetClientID() string {
-	if m != nil {
-		return m.ClientID
-	}
-	return ""
-}
-
-type RegisterReply struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RegisterReply) Reset()         { *m = RegisterReply{} }
-func (m *RegisterReply) String() string { return proto.CompactTextString(m) }
-func (*RegisterReply) ProtoMessage()    {}
-func (*RegisterReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{6}
-}
-
-func (m *RegisterReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegisterReply.Unmarshal(m, b)
-}
-func (m *RegisterReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegisterReply.Marshal(b, m, deterministic)
-}
-func (m *RegisterReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterReply.Merge(m, src)
-}
-func (m *RegisterReply) XXX_Size() int {
-	return xxx_messageInfo_RegisterReply.Size(m)
-}
-func (m *RegisterReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegisterReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegisterReply proto.InternalMessageInfo
-
-func (m *RegisterReply) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
-func (m *RegisterReply) GetReason() string {
-	if m != nil {
-		return m.Reason
-	}
-	return ""
-}
-
-type UnregisterRequest struct {
-	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UnregisterRequest) Reset()         { *m = UnregisterRequest{} }
-func (m *UnregisterRequest) String() string { return proto.CompactTextString(m) }
-func (*UnregisterRequest) ProtoMessage()    {}
-func (*UnregisterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{7}
-}
-
-func (m *UnregisterRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UnregisterRequest.Unmarshal(m, b)
-}
-func (m *UnregisterRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UnregisterRequest.Marshal(b, m, deterministic)
-}
-func (m *UnregisterRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UnregisterRequest.Merge(m, src)
-}
-func (m *UnregisterRequest) XXX_Size() int {
-	return xxx_messageInfo_UnregisterRequest.Size(m)
-}
-func (m *UnregisterRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UnregisterRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UnregisterRequest proto.InternalMessageInfo
-
-func (m *UnregisterRequest) GetClientID() string {
-	if m != nil {
-		return m.ClientID
-	}
-	return ""
-}
-
-type UnregisterReply struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UnregisterReply) Reset()         { *m = UnregisterReply{} }
-func (m *UnregisterReply) String() string { return proto.CompactTextString(m) }
-func (*UnregisterReply) ProtoMessage()    {}
-func (*UnregisterReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{8}
-}
-
-func (m *UnregisterReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UnregisterReply.Unmarshal(m, b)
-}
-func (m *UnregisterReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UnregisterReply.Marshal(b, m, deterministic)
-}
-func (m *UnregisterReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UnregisterReply.Merge(m, src)
-}
-func (m *UnregisterReply) XXX_Size() int {
-	return xxx_messageInfo_UnregisterReply.Size(m)
-}
-func (m *UnregisterReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_UnregisterReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UnregisterReply proto.InternalMessageInfo
-
-func (m *UnregisterReply) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
-func (m *UnregisterReply) GetReason() string {
-	if m != nil {
-		return m.Reason
-	}
-	return ""
-}
-
-type ReleasePipelinesRequest struct {
-	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
-	Pipelines            []uint64 `protobuf:"varint,2,rep,packed,name=pipelines,proto3" json:"pipelines,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ReleasePipelinesRequest) Reset()         { *m = ReleasePipelinesRequest{} }
-func (m *ReleasePipelinesRequest) String() string { return proto.CompactTextString(m) }
-func (*ReleasePipelinesRequest) ProtoMessage()    {}
-func (*ReleasePipelinesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{9}
-}
-
-func (m *ReleasePipelinesRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ReleasePipelinesRequest.Unmarshal(m, b)
-}
-func (m *ReleasePipelinesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ReleasePipelinesRequest.Marshal(b, m, deterministic)
-}
-func (m *ReleasePipelinesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ReleasePipelinesRequest.Merge(m, src)
-}
-func (m *ReleasePipelinesRequest) XXX_Size() int {
-	return xxx_messageInfo_ReleasePipelinesRequest.Size(m)
-}
-func (m *ReleasePipelinesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ReleasePipelinesRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ReleasePipelinesRequest proto.InternalMessageInfo
-
-func (m *ReleasePipelinesRequest) GetClientID() string {
-	if m != nil {
-		return m.ClientID
-	}
-	return ""
-}
-
-func (m *ReleasePipelinesRequest) GetPipelines() []uint64 {
-	if m != nil {
-		return m.Pipelines
-	}
-	return nil
-}
-
-type ReleasePipelinesReply struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	Failures             []uint64 `protobuf:"varint,3,rep,packed,name=failures,proto3" json:"failures,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ReleasePipelinesReply) Reset()         { *m = ReleasePipelinesReply{} }
-func (m *ReleasePipelinesReply) String() string { return proto.CompactTextString(m) }
-func (*ReleasePipelinesReply) ProtoMessage()    {}
-func (*ReleasePipelinesReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{10}
-}
-
-func (m *ReleasePipelinesReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ReleasePipelinesReply.Unmarshal(m, b)
-}
-func (m *ReleasePipelinesReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ReleasePipelinesReply.Marshal(b, m, deterministic)
-}
-func (m *ReleasePipelinesReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ReleasePipelinesReply.Merge(m, src)
-}
-func (m *ReleasePipelinesReply) XXX_Size() int {
-	return xxx_messageInfo_ReleasePipelinesReply.Size(m)
-}
-func (m *ReleasePipelinesReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_ReleasePipelinesReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ReleasePipelinesReply proto.InternalMessageInfo
-
-func (m *ReleasePipelinesReply) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
-func (m *ReleasePipelinesReply) GetReason() string {
-	if m != nil {
-		return m.Reason
-	}
-	return ""
-}
-
-func (m *ReleasePipelinesReply) GetFailures() []uint64 {
-	if m != nil {
-		return m.Failures
-	}
-	return nil
-}
-
-type GetPipelinesRequest struct {
-	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetPipelinesRequest) Reset()         { *m = GetPipelinesRequest{} }
-func (m *GetPipelinesRequest) String() string { return proto.CompactTextString(m) }
-func (*GetPipelinesRequest) ProtoMessage()    {}
-func (*GetPipelinesRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{11}
-}
-
-func (m *GetPipelinesRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetPipelinesRequest.Unmarshal(m, b)
-}
-func (m *GetPipelinesRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetPipelinesRequest.Marshal(b, m, deterministic)
-}
-func (m *GetPipelinesRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetPipelinesRequest.Merge(m, src)
-}
-func (m *GetPipelinesRequest) XXX_Size() int {
-	return xxx_messageInfo_GetPipelinesRequest.Size(m)
-}
-func (m *GetPipelinesRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetPipelinesRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetPipelinesRequest proto.InternalMessageInfo
-
-func (m *GetPipelinesRequest) GetClientID() string {
-	if m != nil {
-		return m.ClientID
-	}
-	return ""
-}
-
-type GetPipelinesReply struct {
-	Pipelines            []uint64 `protobuf:"varint,1,rep,packed,name=pipelines,proto3" json:"pipelines,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *GetPipelinesReply) Reset()         { *m = GetPipelinesReply{} }
-func (m *GetPipelinesReply) String() string { return proto.CompactTextString(m) }
-func (*GetPipelinesReply) ProtoMessage()    {}
-func (*GetPipelinesReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{12}
-}
-
-func (m *GetPipelinesReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_GetPipelinesReply.Unmarshal(m, b)
-}
-func (m *GetPipelinesReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_GetPipelinesReply.Marshal(b, m, deterministic)
-}
-func (m *GetPipelinesReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_GetPipelinesReply.Merge(m, src)
-}
-func (m *GetPipelinesReply) XXX_Size() int {
-	return xxx_messageInfo_GetPipelinesReply.Size(m)
-}
-func (m *GetPipelinesReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_GetPipelinesReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_GetPipelinesReply proto.InternalMessageInfo
-
-func (m *GetPipelinesReply) GetPipelines() []uint64 {
-	if m != nil {
-		return m.Pipelines
-	}
-	return nil
-}
-
 // Adapter
 type RegisterAdapterRequest struct {
 	ClientID             string   `protobuf:"bytes,1,opt,name=clientID,proto3" json:"clientID,omitempty"`
@@ -643,7 +265,7 @@ func (m *RegisterAdapterRequest) Reset()         { *m = RegisterAdapterRequest{}
 func (m *RegisterAdapterRequest) String() string { return proto.CompactTextString(m) }
 func (*RegisterAdapterRequest) ProtoMessage()    {}
 func (*RegisterAdapterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{13}
+	return fileDescriptor_ed7f10298fa1d90f, []int{5}
 }
 
 func (m *RegisterAdapterRequest) XXX_Unmarshal(b []byte) error {
@@ -697,7 +319,7 @@ func (m *RegisterAdapterReply) Reset()         { *m = RegisterAdapterReply{} }
 func (m *RegisterAdapterReply) String() string { return proto.CompactTextString(m) }
 func (*RegisterAdapterReply) ProtoMessage()    {}
 func (*RegisterAdapterReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{14}
+	return fileDescriptor_ed7f10298fa1d90f, []int{6}
 }
 
 func (m *RegisterAdapterReply) XXX_Unmarshal(b []byte) error {
@@ -743,7 +365,7 @@ func (m *UnregisterAdapterRequest) Reset()         { *m = UnregisterAdapterReque
 func (m *UnregisterAdapterRequest) String() string { return proto.CompactTextString(m) }
 func (*UnregisterAdapterRequest) ProtoMessage()    {}
 func (*UnregisterAdapterRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{15}
+	return fileDescriptor_ed7f10298fa1d90f, []int{7}
 }
 
 func (m *UnregisterAdapterRequest) XXX_Unmarshal(b []byte) error {
@@ -783,7 +405,7 @@ func (m *UnregisterAdapterReply) Reset()         { *m = UnregisterAdapterReply{}
 func (m *UnregisterAdapterReply) String() string { return proto.CompactTextString(m) }
 func (*UnregisterAdapterReply) ProtoMessage()    {}
 func (*UnregisterAdapterReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{16}
+	return fileDescriptor_ed7f10298fa1d90f, []int{8}
 }
 
 func (m *UnregisterAdapterReply) XXX_Unmarshal(b []byte) error {
@@ -818,202 +440,7 @@ func (m *UnregisterAdapterReply) GetReason() string {
 	return ""
 }
 
-type RegisterSubscriberRequest struct {
-	SubscriberID         string         `protobuf:"bytes,1,opt,name=subscriberID,proto3" json:"subscriberID,omitempty"`
-	Name                 string         `protobuf:"bytes,2,opt,name=name,proto3" json:"name,omitempty"`
-	Type                 SubscriberType `protobuf:"varint,3,opt,name=type,proto3,enum=gravity.api.controller.SubscriberType" json:"type,omitempty"`
-	Component            string         `protobuf:"bytes,4,opt,name=component,proto3" json:"component,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}       `json:"-"`
-	XXX_unrecognized     []byte         `json:"-"`
-	XXX_sizecache        int32          `json:"-"`
-}
-
-func (m *RegisterSubscriberRequest) Reset()         { *m = RegisterSubscriberRequest{} }
-func (m *RegisterSubscriberRequest) String() string { return proto.CompactTextString(m) }
-func (*RegisterSubscriberRequest) ProtoMessage()    {}
-func (*RegisterSubscriberRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{17}
-}
-
-func (m *RegisterSubscriberRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegisterSubscriberRequest.Unmarshal(m, b)
-}
-func (m *RegisterSubscriberRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegisterSubscriberRequest.Marshal(b, m, deterministic)
-}
-func (m *RegisterSubscriberRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterSubscriberRequest.Merge(m, src)
-}
-func (m *RegisterSubscriberRequest) XXX_Size() int {
-	return xxx_messageInfo_RegisterSubscriberRequest.Size(m)
-}
-func (m *RegisterSubscriberRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegisterSubscriberRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegisterSubscriberRequest proto.InternalMessageInfo
-
-func (m *RegisterSubscriberRequest) GetSubscriberID() string {
-	if m != nil {
-		return m.SubscriberID
-	}
-	return ""
-}
-
-func (m *RegisterSubscriberRequest) GetName() string {
-	if m != nil {
-		return m.Name
-	}
-	return ""
-}
-
-func (m *RegisterSubscriberRequest) GetType() SubscriberType {
-	if m != nil {
-		return m.Type
-	}
-	return SubscriberType_TRANSMITTER
-}
-
-func (m *RegisterSubscriberRequest) GetComponent() string {
-	if m != nil {
-		return m.Component
-	}
-	return ""
-}
-
-type RegisterSubscriberReply struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *RegisterSubscriberReply) Reset()         { *m = RegisterSubscriberReply{} }
-func (m *RegisterSubscriberReply) String() string { return proto.CompactTextString(m) }
-func (*RegisterSubscriberReply) ProtoMessage()    {}
-func (*RegisterSubscriberReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{18}
-}
-
-func (m *RegisterSubscriberReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_RegisterSubscriberReply.Unmarshal(m, b)
-}
-func (m *RegisterSubscriberReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_RegisterSubscriberReply.Marshal(b, m, deterministic)
-}
-func (m *RegisterSubscriberReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_RegisterSubscriberReply.Merge(m, src)
-}
-func (m *RegisterSubscriberReply) XXX_Size() int {
-	return xxx_messageInfo_RegisterSubscriberReply.Size(m)
-}
-func (m *RegisterSubscriberReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_RegisterSubscriberReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_RegisterSubscriberReply proto.InternalMessageInfo
-
-func (m *RegisterSubscriberReply) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
-func (m *RegisterSubscriberReply) GetReason() string {
-	if m != nil {
-		return m.Reason
-	}
-	return ""
-}
-
-type UnregisterSubscriberRequest struct {
-	SubscriberID         string   `protobuf:"bytes,1,opt,name=subscriberID,proto3" json:"subscriberID,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UnregisterSubscriberRequest) Reset()         { *m = UnregisterSubscriberRequest{} }
-func (m *UnregisterSubscriberRequest) String() string { return proto.CompactTextString(m) }
-func (*UnregisterSubscriberRequest) ProtoMessage()    {}
-func (*UnregisterSubscriberRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{19}
-}
-
-func (m *UnregisterSubscriberRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UnregisterSubscriberRequest.Unmarshal(m, b)
-}
-func (m *UnregisterSubscriberRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UnregisterSubscriberRequest.Marshal(b, m, deterministic)
-}
-func (m *UnregisterSubscriberRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UnregisterSubscriberRequest.Merge(m, src)
-}
-func (m *UnregisterSubscriberRequest) XXX_Size() int {
-	return xxx_messageInfo_UnregisterSubscriberRequest.Size(m)
-}
-func (m *UnregisterSubscriberRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_UnregisterSubscriberRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UnregisterSubscriberRequest proto.InternalMessageInfo
-
-func (m *UnregisterSubscriberRequest) GetSubscriberID() string {
-	if m != nil {
-		return m.SubscriberID
-	}
-	return ""
-}
-
-type UnregisterSubscriberReply struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *UnregisterSubscriberReply) Reset()         { *m = UnregisterSubscriberReply{} }
-func (m *UnregisterSubscriberReply) String() string { return proto.CompactTextString(m) }
-func (*UnregisterSubscriberReply) ProtoMessage()    {}
-func (*UnregisterSubscriberReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{20}
-}
-
-func (m *UnregisterSubscriberReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_UnregisterSubscriberReply.Unmarshal(m, b)
-}
-func (m *UnregisterSubscriberReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_UnregisterSubscriberReply.Marshal(b, m, deterministic)
-}
-func (m *UnregisterSubscriberReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UnregisterSubscriberReply.Merge(m, src)
-}
-func (m *UnregisterSubscriberReply) XXX_Size() int {
-	return xxx_messageInfo_UnregisterSubscriberReply.Size(m)
-}
-func (m *UnregisterSubscriberReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_UnregisterSubscriberReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_UnregisterSubscriberReply proto.InternalMessageInfo
-
-func (m *UnregisterSubscriberReply) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
-func (m *UnregisterSubscriberReply) GetReason() string {
-	if m != nil {
-		return m.Reason
-	}
-	return ""
-}
-
+// Subscriber
 type SubscribeToCollectionsRequest struct {
 	SubscriberID         string   `protobuf:"bytes,1,opt,name=subscriberID,proto3" json:"subscriberID,omitempty"`
 	Collections          []string `protobuf:"bytes,2,rep,name=collections,proto3" json:"collections,omitempty"`
@@ -1026,7 +453,7 @@ func (m *SubscribeToCollectionsRequest) Reset()         { *m = SubscribeToCollec
 func (m *SubscribeToCollectionsRequest) String() string { return proto.CompactTextString(m) }
 func (*SubscribeToCollectionsRequest) ProtoMessage()    {}
 func (*SubscribeToCollectionsRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{21}
+	return fileDescriptor_ed7f10298fa1d90f, []int{9}
 }
 
 func (m *SubscribeToCollectionsRequest) XXX_Unmarshal(b []byte) error {
@@ -1074,7 +501,7 @@ func (m *SubscribeToCollectionsReply) Reset()         { *m = SubscribeToCollecti
 func (m *SubscribeToCollectionsReply) String() string { return proto.CompactTextString(m) }
 func (*SubscribeToCollectionsReply) ProtoMessage()    {}
 func (*SubscribeToCollectionsReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{22}
+	return fileDescriptor_ed7f10298fa1d90f, []int{10}
 }
 
 func (m *SubscribeToCollectionsReply) XXX_Unmarshal(b []byte) error {
@@ -1116,176 +543,52 @@ func (m *SubscribeToCollectionsReply) GetCollections() []string {
 	return nil
 }
 
-type ResyncRequest struct {
-	DestinationName      string   `protobuf:"bytes,1,opt,name=destinationName,proto3" json:"destinationName,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ResyncRequest) Reset()         { *m = ResyncRequest{} }
-func (m *ResyncRequest) String() string { return proto.CompactTextString(m) }
-func (*ResyncRequest) ProtoMessage()    {}
-func (*ResyncRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{23}
-}
-
-func (m *ResyncRequest) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ResyncRequest.Unmarshal(m, b)
-}
-func (m *ResyncRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ResyncRequest.Marshal(b, m, deterministic)
-}
-func (m *ResyncRequest) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ResyncRequest.Merge(m, src)
-}
-func (m *ResyncRequest) XXX_Size() int {
-	return xxx_messageInfo_ResyncRequest.Size(m)
-}
-func (m *ResyncRequest) XXX_DiscardUnknown() {
-	xxx_messageInfo_ResyncRequest.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ResyncRequest proto.InternalMessageInfo
-
-func (m *ResyncRequest) GetDestinationName() string {
-	if m != nil {
-		return m.DestinationName
-	}
-	return ""
-}
-
-type ResyncReply struct {
-	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
-	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	XXX_NoUnkeyedLiteral struct{} `json:"-"`
-	XXX_unrecognized     []byte   `json:"-"`
-	XXX_sizecache        int32    `json:"-"`
-}
-
-func (m *ResyncReply) Reset()         { *m = ResyncReply{} }
-func (m *ResyncReply) String() string { return proto.CompactTextString(m) }
-func (*ResyncReply) ProtoMessage()    {}
-func (*ResyncReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_ed7f10298fa1d90f, []int{24}
-}
-
-func (m *ResyncReply) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_ResyncReply.Unmarshal(m, b)
-}
-func (m *ResyncReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_ResyncReply.Marshal(b, m, deterministic)
-}
-func (m *ResyncReply) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_ResyncReply.Merge(m, src)
-}
-func (m *ResyncReply) XXX_Size() int {
-	return xxx_messageInfo_ResyncReply.Size(m)
-}
-func (m *ResyncReply) XXX_DiscardUnknown() {
-	xxx_messageInfo_ResyncReply.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_ResyncReply proto.InternalMessageInfo
-
-func (m *ResyncReply) GetSuccess() bool {
-	if m != nil {
-		return m.Success
-	}
-	return false
-}
-
-func (m *ResyncReply) GetReason() string {
-	if m != nil {
-		return m.Reason
-	}
-	return ""
-}
-
 func init() {
-	proto.RegisterEnum("gravity.api.controller.SubscriberType", SubscriberType_name, SubscriberType_value)
 	proto.RegisterType((*GetClientCountRequest)(nil), "gravity.api.controller.GetClientCountRequest")
 	proto.RegisterType((*GetClientCountReply)(nil), "gravity.api.controller.GetClientCountReply")
 	proto.RegisterType((*Pipeline)(nil), "gravity.api.controller.Pipeline")
 	proto.RegisterType((*GetPipelineCountRequest)(nil), "gravity.api.controller.GetPipelineCountRequest")
 	proto.RegisterType((*GetPipelineCountReply)(nil), "gravity.api.controller.GetPipelineCountReply")
-	proto.RegisterType((*RegisterRequest)(nil), "gravity.api.controller.RegisterRequest")
-	proto.RegisterType((*RegisterReply)(nil), "gravity.api.controller.RegisterReply")
-	proto.RegisterType((*UnregisterRequest)(nil), "gravity.api.controller.UnregisterRequest")
-	proto.RegisterType((*UnregisterReply)(nil), "gravity.api.controller.UnregisterReply")
-	proto.RegisterType((*ReleasePipelinesRequest)(nil), "gravity.api.controller.ReleasePipelinesRequest")
-	proto.RegisterType((*ReleasePipelinesReply)(nil), "gravity.api.controller.ReleasePipelinesReply")
-	proto.RegisterType((*GetPipelinesRequest)(nil), "gravity.api.controller.GetPipelinesRequest")
-	proto.RegisterType((*GetPipelinesReply)(nil), "gravity.api.controller.GetPipelinesReply")
 	proto.RegisterType((*RegisterAdapterRequest)(nil), "gravity.api.controller.RegisterAdapterRequest")
 	proto.RegisterType((*RegisterAdapterReply)(nil), "gravity.api.controller.RegisterAdapterReply")
 	proto.RegisterType((*UnregisterAdapterRequest)(nil), "gravity.api.controller.UnregisterAdapterRequest")
 	proto.RegisterType((*UnregisterAdapterReply)(nil), "gravity.api.controller.UnregisterAdapterReply")
-	proto.RegisterType((*RegisterSubscriberRequest)(nil), "gravity.api.controller.RegisterSubscriberRequest")
-	proto.RegisterType((*RegisterSubscriberReply)(nil), "gravity.api.controller.RegisterSubscriberReply")
-	proto.RegisterType((*UnregisterSubscriberRequest)(nil), "gravity.api.controller.UnregisterSubscriberRequest")
-	proto.RegisterType((*UnregisterSubscriberReply)(nil), "gravity.api.controller.UnregisterSubscriberReply")
 	proto.RegisterType((*SubscribeToCollectionsRequest)(nil), "gravity.api.controller.SubscribeToCollectionsRequest")
 	proto.RegisterType((*SubscribeToCollectionsReply)(nil), "gravity.api.controller.SubscribeToCollectionsReply")
-	proto.RegisterType((*ResyncRequest)(nil), "gravity.api.controller.ResyncRequest")
-	proto.RegisterType((*ResyncReply)(nil), "gravity.api.controller.ResyncReply")
 }
 
 func init() { proto.RegisterFile("controller.proto", fileDescriptor_ed7f10298fa1d90f) }
 
 var fileDescriptor_ed7f10298fa1d90f = []byte{
-	// 805 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x57, 0x5f, 0x6f, 0xd2, 0x50,
-	0x14, 0x5f, 0x01, 0x27, 0x9c, 0x4d, 0x60, 0xd7, 0x8d, 0x75, 0x9d, 0x26, 0xe4, 0x1a, 0x1d, 0x73,
-	0x0e, 0x64, 0x4b, 0x4c, 0xf4, 0xc5, 0x10, 0x5c, 0xe6, 0x34, 0x9b, 0xcb, 0x1d, 0x2e, 0x3e, 0xf8,
-	0x27, 0xa5, 0xdc, 0xcd, 0x26, 0xa5, 0xed, 0x7a, 0x2f, 0x1a, 0x7c, 0xf2, 0x0b, 0xf9, 0x79, 0xfc,
-	0x3a, 0xe6, 0xb6, 0xb4, 0x85, 0x16, 0x46, 0x69, 0x7c, 0xe3, 0x9e, 0x7b, 0xce, 0xf9, 0xfd, 0xce,
-	0x9f, 0x7b, 0x4e, 0x81, 0xb2, 0x66, 0x99, 0xdc, 0xb1, 0x0c, 0x83, 0x3a, 0x75, 0xdb, 0xb1, 0xb8,
-	0x85, 0x2a, 0xd7, 0x8e, 0xfa, 0x43, 0xe7, 0xc3, 0xba, 0x6a, 0xeb, 0xf5, 0xf0, 0x16, 0x6f, 0xc2,
-	0xc6, 0x31, 0xe5, 0x6d, 0x43, 0xa7, 0x26, 0x6f, 0x5b, 0x03, 0x93, 0x13, 0x7a, 0x33, 0xa0, 0x8c,
-	0xe3, 0x2f, 0x70, 0x3f, 0x7a, 0x61, 0x1b, 0x43, 0x24, 0xc3, 0x5d, 0x36, 0xd0, 0x34, 0xca, 0x98,
-	0x2c, 0x55, 0xa5, 0x5a, 0x9e, 0xf8, 0x47, 0x54, 0x81, 0x65, 0x87, 0xaa, 0xcc, 0x32, 0xe5, 0x4c,
-	0x55, 0xaa, 0x15, 0xc8, 0xe8, 0x84, 0xd6, 0xe1, 0x8e, 0x26, 0xec, 0xe5, 0x6c, 0x55, 0xaa, 0xe5,
-	0x88, 0x77, 0xc0, 0x97, 0x90, 0x3f, 0xd7, 0x6d, 0x6a, 0xe8, 0x26, 0x45, 0x45, 0xc8, 0xe8, 0x3d,
-	0xd7, 0x5d, 0x8e, 0x64, 0xf4, 0x1e, 0x7a, 0x00, 0x05, 0x26, 0x58, 0x98, 0x54, 0xa3, 0xae, 0xb3,
-	0x1c, 0x09, 0x05, 0xe2, 0x96, 0xeb, 0x7d, 0xca, 0xb8, 0xda, 0xb7, 0x47, 0x3e, 0x43, 0x01, 0xde,
-	0x82, 0xcd, 0x63, 0xca, 0x7d, 0xd7, 0x13, 0x11, 0x7d, 0x73, 0x43, 0x8d, 0x5c, 0xfd, 0xcf, 0x98,
-	0xf6, 0xa1, 0x44, 0xe8, 0xb5, 0xce, 0x38, 0x75, 0x46, 0x98, 0x48, 0x81, 0xbc, 0xe6, 0xa6, 0xf0,
-	0xe4, 0x8d, 0xeb, 0xbb, 0x40, 0x82, 0x33, 0x6e, 0xc1, 0xbd, 0x50, 0x3d, 0x15, 0x0f, 0xdc, 0x80,
-	0xb5, 0x8f, 0xa6, 0xb3, 0x00, 0x66, 0x1b, 0x4a, 0xe3, 0x06, 0xe9, 0x50, 0x2f, 0x60, 0x93, 0x50,
-	0x83, 0xaa, 0x8c, 0xfa, 0xc9, 0x64, 0x09, 0xb0, 0x45, 0xe1, 0x6c, 0x5f, 0x5f, 0xce, 0x54, 0xb3,
-	0xa2, 0x70, 0x81, 0x00, 0x53, 0xd8, 0x88, 0x3b, 0x4d, 0x57, 0x1d, 0x05, 0xf2, 0x57, 0xaa, 0x6e,
-	0x0c, 0x1c, 0xca, 0xe4, 0xac, 0x8b, 0x13, 0x9c, 0x71, 0xd3, 0x6d, 0xeb, 0x45, 0x78, 0xe3, 0x26,
-	0xac, 0x4d, 0x9a, 0x08, 0x56, 0x13, 0xc1, 0x48, 0xd1, 0x60, 0xbe, 0x42, 0xc5, 0x2f, 0x6d, 0xab,
-	0xa7, 0xda, 0xc9, 0x8a, 0x83, 0xca, 0x90, 0x1d, 0x38, 0xc6, 0x28, 0x18, 0xf1, 0x53, 0x44, 0x68,
-	0x5d, 0x5d, 0x31, 0xea, 0x35, 0x5a, 0x96, 0x8c, 0x4e, 0xf8, 0x2d, 0xac, 0xc7, 0xfc, 0xa7, 0xab,
-	0xe5, 0x0b, 0x90, 0xc3, 0x86, 0x48, 0xce, 0x15, 0xbf, 0x83, 0xca, 0x14, 0xbb, 0x74, 0x1c, 0xfe,
-	0x48, 0xb0, 0xe5, 0x87, 0x73, 0x31, 0xe8, 0x32, 0xcd, 0xd1, 0xbb, 0x21, 0x0b, 0x0c, 0xab, 0x2c,
-	0x10, 0x06, 0x4c, 0x26, 0x64, 0x08, 0x41, 0xce, 0x54, 0xfb, 0x74, 0xe4, 0xd7, 0xfd, 0x8d, 0x5e,
-	0x41, 0x8e, 0x0f, 0x6d, 0xea, 0x66, 0xae, 0x78, 0xf0, 0xa4, 0x3e, 0x7d, 0x00, 0xd6, 0x43, 0xc0,
-	0xce, 0xd0, 0xa6, 0xc4, 0xb5, 0x11, 0xd5, 0xd5, 0xac, 0xbe, 0x6d, 0x99, 0xd4, 0xe4, 0x72, 0xce,
-	0x75, 0x1a, 0x0a, 0xf0, 0x7b, 0xd1, 0xff, 0x71, 0xba, 0xe9, 0x82, 0x6f, 0xc1, 0x76, 0x98, 0xc8,
-	0x54, 0xd1, 0xe3, 0x53, 0xd8, 0x9a, 0xee, 0x22, 0x1d, 0x23, 0x0a, 0x0f, 0x03, 0x27, 0x1d, 0xab,
-	0x2d, 0xd2, 0xa4, 0x71, 0xdd, 0x32, 0xd9, 0x22, 0x15, 0xa9, 0xc2, 0x8a, 0x16, 0x5a, 0xba, 0xcf,
-	0xbd, 0x40, 0xc6, 0x45, 0xf8, 0x06, 0xb6, 0x67, 0xc1, 0xa4, 0x7b, 0xf6, 0x11, 0xc8, 0x6c, 0x1c,
-	0xf2, 0xa5, 0x98, 0xb8, 0x6c, 0x68, 0x6a, 0x7e, 0x24, 0x35, 0x28, 0xf5, 0x28, 0xe3, 0xba, 0xa9,
-	0x0a, 0x85, 0x33, 0xd1, 0x42, 0x5e, 0x30, 0x51, 0x31, 0x7e, 0x0d, 0x2b, 0xbe, 0x69, 0x2a, 0x76,
-	0x4f, 0x1b, 0x50, 0x9c, 0x6c, 0x35, 0x54, 0x82, 0x95, 0x0e, 0x69, 0x9d, 0x5d, 0x9c, 0x9e, 0x74,
-	0x3a, 0x47, 0xa4, 0xbc, 0x84, 0x56, 0x21, 0x7f, 0xf4, 0xe9, 0xfc, 0x03, 0x11, 0x27, 0xe9, 0xe0,
-	0x6f, 0x01, 0xa0, 0x1d, 0xf4, 0x29, 0x32, 0xa1, 0x38, 0xb9, 0x8f, 0xd1, 0xfe, 0xac, 0x96, 0x9e,
-	0xba, 0xd0, 0x95, 0xbd, 0xa4, 0xea, 0xb6, 0x31, 0xc4, 0x4b, 0x88, 0x43, 0x39, 0xba, 0x2d, 0x51,
-	0xe3, 0x16, 0x17, 0xd3, 0x56, 0xae, 0xb2, 0x9f, 0xdc, 0xc0, 0x43, 0xfd, 0x0c, 0x79, 0xff, 0x69,
-	0xa1, 0x9d, 0x59, 0xc6, 0x91, 0x25, 0xab, 0x3c, 0x9e, 0xaf, 0xe8, 0x79, 0xef, 0x02, 0x84, 0x0f,
-	0x05, 0xed, 0xce, 0x32, 0x8b, 0xad, 0x54, 0x65, 0x27, 0x89, 0x6a, 0x90, 0xb7, 0xe8, 0x1e, 0x9b,
-	0x9d, 0xb7, 0x19, 0x6b, 0x74, 0x76, 0xde, 0xa6, 0xae, 0x48, 0xbc, 0x84, 0xbe, 0xc3, 0xea, 0xf8,
-	0x8e, 0x42, 0x7b, 0x09, 0x12, 0x1f, 0xa0, 0xed, 0x26, 0x53, 0xf6, 0x90, 0x6e, 0xc2, 0x8f, 0x9c,
-	0xd1, 0xd8, 0x47, 0xf5, 0x79, 0xf9, 0x9f, 0xdc, 0x2b, 0xca, 0xb3, 0xc4, 0xfa, 0x1e, 0xe4, 0xcf,
-	0xf1, 0xaf, 0x1c, 0x1f, 0xf4, 0xf9, 0xfc, 0x92, 0x44, 0x60, 0xeb, 0x0b, 0x58, 0x78, 0xc0, 0xbf,
-	0x00, 0xc5, 0x07, 0x3d, 0x6a, 0xce, 0xa3, 0x1f, 0x9b, 0xe2, 0x4a, 0x63, 0x11, 0x13, 0x0f, 0xfb,
-	0xb7, 0x04, 0xeb, 0xd3, 0xa6, 0x3a, 0x3a, 0x9c, 0x1f, 0x46, 0x9c, 0x40, 0x73, 0x31, 0x23, 0x8f,
-	0xc2, 0x25, 0x2c, 0x7b, 0x33, 0x0f, 0xdd, 0xf2, 0xc2, 0xc6, 0xc6, 0xa9, 0xf2, 0x68, 0x9e, 0x9a,
-	0xeb, 0xb7, 0xbb, 0xec, 0xfe, 0x25, 0x39, 0xfc, 0x17, 0x00, 0x00, 0xff, 0xff, 0x4a, 0x95, 0x41,
-	0x5f, 0xa6, 0x0c, 0x00, 0x00,
+	// 443 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xac, 0x54, 0x5d, 0x8f, 0x93, 0x40,
+	0x14, 0xb5, 0xa5, 0xae, 0xed, 0xd5, 0xac, 0x75, 0x5c, 0x59, 0x44, 0x4d, 0xc8, 0x3c, 0x91, 0xe8,
+	0xa2, 0xd1, 0xc4, 0x77, 0x83, 0xc9, 0xaa, 0x4f, 0x66, 0xfc, 0x78, 0x53, 0x43, 0xa7, 0x77, 0x37,
+	0x93, 0xb0, 0x33, 0x74, 0x66, 0xd0, 0xf4, 0xcf, 0xfa, 0x5b, 0x0c, 0x5f, 0xc5, 0x52, 0x30, 0xdd,
+	0xc6, 0x37, 0xee, 0xd7, 0x39, 0xe7, 0xc2, 0x3d, 0xc0, 0x9c, 0x2b, 0x69, 0xb5, 0x4a, 0x53, 0xd4,
+	0x51, 0xa6, 0x95, 0x55, 0xc4, 0xbd, 0xd4, 0xc9, 0x4f, 0x61, 0xd7, 0x51, 0x92, 0x89, 0xa8, 0xad,
+	0xd2, 0x53, 0x78, 0x70, 0x8e, 0x36, 0x4e, 0x05, 0x4a, 0x1b, 0xab, 0x5c, 0x5a, 0x86, 0xab, 0x1c,
+	0x8d, 0xa5, 0xdf, 0xe0, 0x7e, 0xb7, 0x90, 0xa5, 0x6b, 0xe2, 0xc1, 0x2d, 0x93, 0x73, 0x8e, 0xc6,
+	0x78, 0xa3, 0x60, 0x14, 0x4e, 0x59, 0x13, 0x12, 0x17, 0x8e, 0x34, 0x26, 0x46, 0x49, 0x6f, 0x1c,
+	0x8c, 0xc2, 0x19, 0xab, 0x23, 0x72, 0x02, 0x37, 0x79, 0x31, 0xef, 0x39, 0xc1, 0x28, 0x9c, 0xb0,
+	0x2a, 0xa0, 0x5f, 0x61, 0xfa, 0x51, 0x64, 0x98, 0x0a, 0x89, 0xe4, 0x18, 0xc6, 0x62, 0x59, 0xc2,
+	0x4d, 0xd8, 0x58, 0x2c, 0xc9, 0x63, 0x98, 0x99, 0x42, 0x85, 0x44, 0x8e, 0x25, 0xd8, 0x84, 0xb5,
+	0x89, 0xa2, 0x6a, 0xc5, 0x15, 0x1a, 0x9b, 0x5c, 0x65, 0x35, 0x66, 0x9b, 0xa0, 0x0f, 0xe1, 0xf4,
+	0x1c, 0x6d, 0x03, 0xbd, 0xb5, 0xd1, 0x8f, 0x72, 0xd5, 0x4e, 0xe9, 0x7f, 0xee, 0xf4, 0x1d, 0x5c,
+	0x86, 0x97, 0xc2, 0x58, 0xd4, 0x6f, 0x96, 0x49, 0x66, 0x51, 0xd7, 0xd4, 0xc4, 0x87, 0x29, 0x2f,
+	0xdf, 0xe4, 0xfb, 0xb7, 0x25, 0xc5, 0x8c, 0x6d, 0x62, 0x32, 0x07, 0x27, 0xd7, 0x69, 0x4d, 0x50,
+	0x3c, 0x16, 0xac, 0xea, 0xe2, 0xc2, 0x60, 0x05, 0xef, 0xb0, 0x3a, 0xa2, 0xef, 0xe0, 0x64, 0x07,
+	0xff, 0x20, 0xfd, 0xf4, 0x35, 0x78, 0x5f, 0xa4, 0xbe, 0xb6, 0x56, 0xfa, 0x01, 0xdc, 0x9e, 0xb9,
+	0xc3, 0x34, 0x20, 0x3c, 0xf9, 0x94, 0x2f, 0x0c, 0xd7, 0x62, 0x81, 0x9f, 0x55, 0x5c, 0x9c, 0x23,
+	0xb7, 0x42, 0x49, 0xd3, 0x08, 0xa1, 0x70, 0xc7, 0x34, 0x0d, 0x7a, 0x23, 0x66, 0x2b, 0x47, 0x02,
+	0xb8, 0xcd, 0xdb, 0x49, 0x6f, 0x1c, 0x38, 0xe1, 0x8c, 0xfd, 0x9d, 0xa2, 0x2b, 0x78, 0x34, 0x44,
+	0x73, 0xd8, 0xb7, 0xef, 0x50, 0x3a, 0x3b, 0x94, 0x2f, 0x7f, 0x3b, 0x00, 0xf1, 0xc6, 0x62, 0x44,
+	0xc2, 0xf1, 0xb6, 0x93, 0xc8, 0x59, 0xd4, 0xef, 0xc6, 0xa8, 0xd7, 0x8a, 0xfe, 0xd3, 0x7d, 0xdb,
+	0xb3, 0x74, 0x4d, 0x6f, 0x10, 0x0b, 0xf3, 0xee, 0x9d, 0x93, 0xe7, 0xff, 0x80, 0xe8, 0x33, 0x8b,
+	0x7f, 0xb6, 0xff, 0x40, 0xc5, 0xba, 0x82, 0xbb, 0x9d, 0xe3, 0x24, 0xd1, 0x10, 0x46, 0xbf, 0x4b,
+	0xfc, 0x67, 0x7b, 0xf7, 0x57, 0x94, 0xbf, 0xe0, 0xde, 0xce, 0x35, 0x92, 0x17, 0x43, 0x20, 0x43,
+	0x07, 0xef, 0x47, 0xd7, 0x98, 0x28, 0x89, 0x17, 0x47, 0xe5, 0x3f, 0xf5, 0xd5, 0x9f, 0x00, 0x00,
+	0x00, 0xff, 0xff, 0x9b, 0xc6, 0x5a, 0x00, 0x67, 0x05, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -1303,17 +606,9 @@ type ControllerClient interface {
 	// Core
 	GetClientCount(ctx context.Context, in *GetClientCountRequest, opts ...grpc.CallOption) (*GetClientCountReply, error)
 	GetPipelineCount(ctx context.Context, in *GetPipelineCountRequest, opts ...grpc.CallOption) (*GetPipelineCountReply, error)
-	Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterReply, error)
-	Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*UnregisterReply, error)
-	ReleasePipelines(ctx context.Context, in *ReleasePipelinesRequest, opts ...grpc.CallOption) (*ReleasePipelinesReply, error)
-	GetPipelines(ctx context.Context, in *GetPipelinesRequest, opts ...grpc.CallOption) (*GetPipelinesReply, error)
 	// Adapter
 	RegisterAdapter(ctx context.Context, in *RegisterAdapterRequest, opts ...grpc.CallOption) (*RegisterAdapterReply, error)
 	UnregisterAdapter(ctx context.Context, in *UnregisterAdapterRequest, opts ...grpc.CallOption) (*UnregisterAdapterReply, error)
-	// Subscriber
-	RegisterSubscriber(ctx context.Context, in *RegisterSubscriberRequest, opts ...grpc.CallOption) (*RegisterSubscriberReply, error)
-	UnregisterSubscriber(ctx context.Context, in *UnregisterSubscriberRequest, opts ...grpc.CallOption) (*UnregisterSubscriberReply, error)
-	Resync(ctx context.Context, in *ResyncRequest, opts ...grpc.CallOption) (*ResyncReply, error)
 }
 
 type controllerClient struct {
@@ -1342,42 +637,6 @@ func (c *controllerClient) GetPipelineCount(ctx context.Context, in *GetPipeline
 	return out, nil
 }
 
-func (c *controllerClient) Register(ctx context.Context, in *RegisterRequest, opts ...grpc.CallOption) (*RegisterReply, error) {
-	out := new(RegisterReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/Register", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *controllerClient) Unregister(ctx context.Context, in *UnregisterRequest, opts ...grpc.CallOption) (*UnregisterReply, error) {
-	out := new(UnregisterReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/Unregister", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *controllerClient) ReleasePipelines(ctx context.Context, in *ReleasePipelinesRequest, opts ...grpc.CallOption) (*ReleasePipelinesReply, error) {
-	out := new(ReleasePipelinesReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/ReleasePipelines", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *controllerClient) GetPipelines(ctx context.Context, in *GetPipelinesRequest, opts ...grpc.CallOption) (*GetPipelinesReply, error) {
-	out := new(GetPipelinesReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/GetPipelines", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 func (c *controllerClient) RegisterAdapter(ctx context.Context, in *RegisterAdapterRequest, opts ...grpc.CallOption) (*RegisterAdapterReply, error) {
 	out := new(RegisterAdapterReply)
 	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/RegisterAdapter", in, out, opts...)
@@ -1396,49 +655,14 @@ func (c *controllerClient) UnregisterAdapter(ctx context.Context, in *Unregister
 	return out, nil
 }
 
-func (c *controllerClient) RegisterSubscriber(ctx context.Context, in *RegisterSubscriberRequest, opts ...grpc.CallOption) (*RegisterSubscriberReply, error) {
-	out := new(RegisterSubscriberReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/RegisterSubscriber", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *controllerClient) UnregisterSubscriber(ctx context.Context, in *UnregisterSubscriberRequest, opts ...grpc.CallOption) (*UnregisterSubscriberReply, error) {
-	out := new(UnregisterSubscriberReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/UnregisterSubscriber", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
-func (c *controllerClient) Resync(ctx context.Context, in *ResyncRequest, opts ...grpc.CallOption) (*ResyncReply, error) {
-	out := new(ResyncReply)
-	err := c.cc.Invoke(ctx, "/gravity.api.controller.Controller/Resync", in, out, opts...)
-	if err != nil {
-		return nil, err
-	}
-	return out, nil
-}
-
 // ControllerServer is the server API for Controller service.
 type ControllerServer interface {
 	// Core
 	GetClientCount(context.Context, *GetClientCountRequest) (*GetClientCountReply, error)
 	GetPipelineCount(context.Context, *GetPipelineCountRequest) (*GetPipelineCountReply, error)
-	Register(context.Context, *RegisterRequest) (*RegisterReply, error)
-	Unregister(context.Context, *UnregisterRequest) (*UnregisterReply, error)
-	ReleasePipelines(context.Context, *ReleasePipelinesRequest) (*ReleasePipelinesReply, error)
-	GetPipelines(context.Context, *GetPipelinesRequest) (*GetPipelinesReply, error)
 	// Adapter
 	RegisterAdapter(context.Context, *RegisterAdapterRequest) (*RegisterAdapterReply, error)
 	UnregisterAdapter(context.Context, *UnregisterAdapterRequest) (*UnregisterAdapterReply, error)
-	// Subscriber
-	RegisterSubscriber(context.Context, *RegisterSubscriberRequest) (*RegisterSubscriberReply, error)
-	UnregisterSubscriber(context.Context, *UnregisterSubscriberRequest) (*UnregisterSubscriberReply, error)
-	Resync(context.Context, *ResyncRequest) (*ResyncReply, error)
 }
 
 // UnimplementedControllerServer can be embedded to have forward compatible implementations.
@@ -1451,32 +675,11 @@ func (*UnimplementedControllerServer) GetClientCount(ctx context.Context, req *G
 func (*UnimplementedControllerServer) GetPipelineCount(ctx context.Context, req *GetPipelineCountRequest) (*GetPipelineCountReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method GetPipelineCount not implemented")
 }
-func (*UnimplementedControllerServer) Register(ctx context.Context, req *RegisterRequest) (*RegisterReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Register not implemented")
-}
-func (*UnimplementedControllerServer) Unregister(ctx context.Context, req *UnregisterRequest) (*UnregisterReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Unregister not implemented")
-}
-func (*UnimplementedControllerServer) ReleasePipelines(ctx context.Context, req *ReleasePipelinesRequest) (*ReleasePipelinesReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method ReleasePipelines not implemented")
-}
-func (*UnimplementedControllerServer) GetPipelines(ctx context.Context, req *GetPipelinesRequest) (*GetPipelinesReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetPipelines not implemented")
-}
 func (*UnimplementedControllerServer) RegisterAdapter(ctx context.Context, req *RegisterAdapterRequest) (*RegisterAdapterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method RegisterAdapter not implemented")
 }
 func (*UnimplementedControllerServer) UnregisterAdapter(ctx context.Context, req *UnregisterAdapterRequest) (*UnregisterAdapterReply, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UnregisterAdapter not implemented")
-}
-func (*UnimplementedControllerServer) RegisterSubscriber(ctx context.Context, req *RegisterSubscriberRequest) (*RegisterSubscriberReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method RegisterSubscriber not implemented")
-}
-func (*UnimplementedControllerServer) UnregisterSubscriber(ctx context.Context, req *UnregisterSubscriberRequest) (*UnregisterSubscriberReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UnregisterSubscriber not implemented")
-}
-func (*UnimplementedControllerServer) Resync(ctx context.Context, req *ResyncRequest) (*ResyncReply, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Resync not implemented")
 }
 
 func RegisterControllerServer(s *grpc.Server, srv ControllerServer) {
@@ -1519,78 +722,6 @@ func _Controller_GetPipelineCount_Handler(srv interface{}, ctx context.Context, 
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Controller_Register_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).Register(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/Register",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).Register(ctx, req.(*RegisterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Controller_Unregister_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).Unregister(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/Unregister",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).Unregister(ctx, req.(*UnregisterRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Controller_ReleasePipelines_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ReleasePipelinesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).ReleasePipelines(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/ReleasePipelines",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).ReleasePipelines(ctx, req.(*ReleasePipelinesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Controller_GetPipelines_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(GetPipelinesRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).GetPipelines(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/GetPipelines",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).GetPipelines(ctx, req.(*GetPipelinesRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 func _Controller_RegisterAdapter_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(RegisterAdapterRequest)
 	if err := dec(in); err != nil {
@@ -1627,60 +758,6 @@ func _Controller_UnregisterAdapter_Handler(srv interface{}, ctx context.Context,
 	return interceptor(ctx, in, info, handler)
 }
 
-func _Controller_RegisterSubscriber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(RegisterSubscriberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).RegisterSubscriber(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/RegisterSubscriber",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).RegisterSubscriber(ctx, req.(*RegisterSubscriberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Controller_UnregisterSubscriber_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UnregisterSubscriberRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).UnregisterSubscriber(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/UnregisterSubscriber",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).UnregisterSubscriber(ctx, req.(*UnregisterSubscriberRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
-func _Controller_Resync_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(ResyncRequest)
-	if err := dec(in); err != nil {
-		return nil, err
-	}
-	if interceptor == nil {
-		return srv.(ControllerServer).Resync(ctx, in)
-	}
-	info := &grpc.UnaryServerInfo{
-		Server:     srv,
-		FullMethod: "/gravity.api.controller.Controller/Resync",
-	}
-	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(ControllerServer).Resync(ctx, req.(*ResyncRequest))
-	}
-	return interceptor(ctx, in, info, handler)
-}
-
 var _Controller_serviceDesc = grpc.ServiceDesc{
 	ServiceName: "gravity.api.controller.Controller",
 	HandlerType: (*ControllerServer)(nil),
@@ -1694,40 +771,12 @@ var _Controller_serviceDesc = grpc.ServiceDesc{
 			Handler:    _Controller_GetPipelineCount_Handler,
 		},
 		{
-			MethodName: "Register",
-			Handler:    _Controller_Register_Handler,
-		},
-		{
-			MethodName: "Unregister",
-			Handler:    _Controller_Unregister_Handler,
-		},
-		{
-			MethodName: "ReleasePipelines",
-			Handler:    _Controller_ReleasePipelines_Handler,
-		},
-		{
-			MethodName: "GetPipelines",
-			Handler:    _Controller_GetPipelines_Handler,
-		},
-		{
 			MethodName: "RegisterAdapter",
 			Handler:    _Controller_RegisterAdapter_Handler,
 		},
 		{
 			MethodName: "UnregisterAdapter",
 			Handler:    _Controller_UnregisterAdapter_Handler,
-		},
-		{
-			MethodName: "RegisterSubscriber",
-			Handler:    _Controller_RegisterSubscriber_Handler,
-		},
-		{
-			MethodName: "UnregisterSubscriber",
-			Handler:    _Controller_UnregisterSubscriber_Handler,
-		},
-		{
-			MethodName: "Resync",
-			Handler:    _Controller_Resync_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
