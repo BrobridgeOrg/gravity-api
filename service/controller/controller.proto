@@ -6,10 +6,6 @@ service Controller {
 
   // Core
   rpc GetClientCount(GetClientCountRequest) returns (GetClientCountReply) {}
-
-  // Adapter
-  rpc RegisterAdapter(RegisterAdapterRequest) returns (RegisterAdapterReply) {}
-  rpc UnregisterAdapter(UnregisterAdapterRequest) returns (UnregisterAdapterReply) {}
 }
 
 message GetClientCountRequest {
@@ -25,27 +21,6 @@ message Pipeline {
   uint64 id = 1;
   uint64 sequenece = 2;
   uint64 timestamp = 3;
-}
-
-// Adapter
-message RegisterAdapterRequest {
-  string clientID = 1;
-  string url = 2;
-  int64 offset = 3;
-}
-
-message RegisterAdapterReply {
-  bool success = 1;
-  string reason = 2;
-}
-
-message UnregisterAdapterRequest {
-  string clientID = 1;
-}
-
-message UnregisterAdapterReply {
-  bool success = 1;
-  string reason = 2;
 }
 
 // Subscriber
