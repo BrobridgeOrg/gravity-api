@@ -1,0 +1,38 @@
+syntax = "proto3";
+
+package gravity.api.adapter_manager;
+
+message RegisterAdapterRequest {
+  string adapterID = 1;
+  string name = 2;
+  string component = 3;
+}
+
+message RegisterAdapterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterAdapterRequest {
+  string adapterID = 1;
+}
+
+message UnregisterAdapterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message Adapter {
+  string adapterID = 1;
+  string name = 2;
+  string component = 3;
+}
+
+message GetAdaptersRequest {
+}
+
+message GetAdaptersReply {
+  bool success = 1;
+  string reason = 2;
+  repeated Adapter adapters = 3;
+}
