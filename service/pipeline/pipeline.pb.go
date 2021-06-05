@@ -247,12 +247,99 @@ func (m *CreateSnapshotReply) GetReason() string {
 	return ""
 }
 
+type ReleaseSnapshotRequest struct {
+	SnapshotID           string   `protobuf:"bytes,1,opt,name=snapshotID,proto3" json:"snapshotID,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ReleaseSnapshotRequest) Reset()         { *m = ReleaseSnapshotRequest{} }
+func (m *ReleaseSnapshotRequest) String() string { return proto.CompactTextString(m) }
+func (*ReleaseSnapshotRequest) ProtoMessage()    {}
+func (*ReleaseSnapshotRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7ac67a7adf3df9c7, []int{5}
+}
+
+func (m *ReleaseSnapshotRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReleaseSnapshotRequest.Unmarshal(m, b)
+}
+func (m *ReleaseSnapshotRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReleaseSnapshotRequest.Marshal(b, m, deterministic)
+}
+func (m *ReleaseSnapshotRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReleaseSnapshotRequest.Merge(m, src)
+}
+func (m *ReleaseSnapshotRequest) XXX_Size() int {
+	return xxx_messageInfo_ReleaseSnapshotRequest.Size(m)
+}
+func (m *ReleaseSnapshotRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReleaseSnapshotRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReleaseSnapshotRequest proto.InternalMessageInfo
+
+func (m *ReleaseSnapshotRequest) GetSnapshotID() string {
+	if m != nil {
+		return m.SnapshotID
+	}
+	return ""
+}
+
+type ReleaseSnapshotReply struct {
+	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *ReleaseSnapshotReply) Reset()         { *m = ReleaseSnapshotReply{} }
+func (m *ReleaseSnapshotReply) String() string { return proto.CompactTextString(m) }
+func (*ReleaseSnapshotReply) ProtoMessage()    {}
+func (*ReleaseSnapshotReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7ac67a7adf3df9c7, []int{6}
+}
+
+func (m *ReleaseSnapshotReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_ReleaseSnapshotReply.Unmarshal(m, b)
+}
+func (m *ReleaseSnapshotReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_ReleaseSnapshotReply.Marshal(b, m, deterministic)
+}
+func (m *ReleaseSnapshotReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_ReleaseSnapshotReply.Merge(m, src)
+}
+func (m *ReleaseSnapshotReply) XXX_Size() int {
+	return xxx_messageInfo_ReleaseSnapshotReply.Size(m)
+}
+func (m *ReleaseSnapshotReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_ReleaseSnapshotReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_ReleaseSnapshotReply proto.InternalMessageInfo
+
+func (m *ReleaseSnapshotReply) GetSuccess() bool {
+	if m != nil {
+		return m.Success
+	}
+	return false
+}
+
+func (m *ReleaseSnapshotReply) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
+}
+
 type FetchSnapshotRequest struct {
-	SubscriberID         string   `protobuf:"bytes,1,opt,name=subscriberID,proto3" json:"subscriberID,omitempty"`
-	PipelineID           uint64   `protobuf:"varint,2,opt,name=pipelineID,proto3" json:"pipelineID,omitempty"`
-	Key                  []byte   `protobuf:"bytes,3,opt,name=key,proto3" json:"key,omitempty"`
-	Offset               uint64   `protobuf:"varint,4,opt,name=offset,proto3" json:"offset,omitempty"`
-	Count                int64    `protobuf:"varint,5,opt,name=count,proto3" json:"count,omitempty"`
+	SnapshotID           string   `protobuf:"bytes,1,opt,name=snapshotID,proto3" json:"snapshotID,omitempty"`
+	SubscriberID         string   `protobuf:"bytes,2,opt,name=subscriberID,proto3" json:"subscriberID,omitempty"`
+	Collection           string   `protobuf:"bytes,3,opt,name=collection,proto3" json:"collection,omitempty"`
+	Key                  []byte   `protobuf:"bytes,4,opt,name=key,proto3" json:"key,omitempty"`
+	Offset               uint64   `protobuf:"varint,5,opt,name=offset,proto3" json:"offset,omitempty"`
+	Count                int64    `protobuf:"varint,6,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -262,7 +349,7 @@ func (m *FetchSnapshotRequest) Reset()         { *m = FetchSnapshotRequest{} }
 func (m *FetchSnapshotRequest) String() string { return proto.CompactTextString(m) }
 func (*FetchSnapshotRequest) ProtoMessage()    {}
 func (*FetchSnapshotRequest) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7ac67a7adf3df9c7, []int{5}
+	return fileDescriptor_7ac67a7adf3df9c7, []int{7}
 }
 
 func (m *FetchSnapshotRequest) XXX_Unmarshal(b []byte) error {
@@ -283,6 +370,13 @@ func (m *FetchSnapshotRequest) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_FetchSnapshotRequest proto.InternalMessageInfo
 
+func (m *FetchSnapshotRequest) GetSnapshotID() string {
+	if m != nil {
+		return m.SnapshotID
+	}
+	return ""
+}
+
 func (m *FetchSnapshotRequest) GetSubscriberID() string {
 	if m != nil {
 		return m.SubscriberID
@@ -290,11 +384,11 @@ func (m *FetchSnapshotRequest) GetSubscriberID() string {
 	return ""
 }
 
-func (m *FetchSnapshotRequest) GetPipelineID() uint64 {
+func (m *FetchSnapshotRequest) GetCollection() string {
 	if m != nil {
-		return m.PipelineID
+		return m.Collection
 	}
-	return 0
+	return ""
 }
 
 func (m *FetchSnapshotRequest) GetKey() []byte {
@@ -321,8 +415,8 @@ func (m *FetchSnapshotRequest) GetCount() int64 {
 type FetchSnapshotReply struct {
 	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
 	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
-	Count                uint64   `protobuf:"varint,3,opt,name=count,proto3" json:"count,omitempty"`
-	LastKey              []byte   `protobuf:"bytes,4,opt,name=lastKey,proto3" json:"lastKey,omitempty"`
+	LastKey              []byte   `protobuf:"bytes,3,opt,name=lastKey,proto3" json:"lastKey,omitempty"`
+	Count                int64    `protobuf:"varint,4,opt,name=count,proto3" json:"count,omitempty"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
@@ -332,7 +426,7 @@ func (m *FetchSnapshotReply) Reset()         { *m = FetchSnapshotReply{} }
 func (m *FetchSnapshotReply) String() string { return proto.CompactTextString(m) }
 func (*FetchSnapshotReply) ProtoMessage()    {}
 func (*FetchSnapshotReply) Descriptor() ([]byte, []int) {
-	return fileDescriptor_7ac67a7adf3df9c7, []int{6}
+	return fileDescriptor_7ac67a7adf3df9c7, []int{8}
 }
 
 func (m *FetchSnapshotReply) XXX_Unmarshal(b []byte) error {
@@ -367,18 +461,112 @@ func (m *FetchSnapshotReply) GetReason() string {
 	return ""
 }
 
-func (m *FetchSnapshotReply) GetCount() uint64 {
+func (m *FetchSnapshotReply) GetLastKey() []byte {
+	if m != nil {
+		return m.LastKey
+	}
+	return nil
+}
+
+func (m *FetchSnapshotReply) GetCount() int64 {
 	if m != nil {
 		return m.Count
 	}
 	return 0
 }
 
-func (m *FetchSnapshotReply) GetLastKey() []byte {
+type SuspendRequest struct {
+	SubscriberID         string   `protobuf:"bytes,1,opt,name=subscriberID,proto3" json:"subscriberID,omitempty"`
+	Sequence             uint64   `protobuf:"varint,3,opt,name=Sequence,proto3" json:"Sequence,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SuspendRequest) Reset()         { *m = SuspendRequest{} }
+func (m *SuspendRequest) String() string { return proto.CompactTextString(m) }
+func (*SuspendRequest) ProtoMessage()    {}
+func (*SuspendRequest) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7ac67a7adf3df9c7, []int{9}
+}
+
+func (m *SuspendRequest) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SuspendRequest.Unmarshal(m, b)
+}
+func (m *SuspendRequest) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SuspendRequest.Marshal(b, m, deterministic)
+}
+func (m *SuspendRequest) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SuspendRequest.Merge(m, src)
+}
+func (m *SuspendRequest) XXX_Size() int {
+	return xxx_messageInfo_SuspendRequest.Size(m)
+}
+func (m *SuspendRequest) XXX_DiscardUnknown() {
+	xxx_messageInfo_SuspendRequest.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SuspendRequest proto.InternalMessageInfo
+
+func (m *SuspendRequest) GetSubscriberID() string {
 	if m != nil {
-		return m.LastKey
+		return m.SubscriberID
 	}
-	return nil
+	return ""
+}
+
+func (m *SuspendRequest) GetSequence() uint64 {
+	if m != nil {
+		return m.Sequence
+	}
+	return 0
+}
+
+type SuspendReply struct {
+	Success              bool     `protobuf:"varint,1,opt,name=success,proto3" json:"success,omitempty"`
+	Reason               string   `protobuf:"bytes,2,opt,name=reason,proto3" json:"reason,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
+}
+
+func (m *SuspendReply) Reset()         { *m = SuspendReply{} }
+func (m *SuspendReply) String() string { return proto.CompactTextString(m) }
+func (*SuspendReply) ProtoMessage()    {}
+func (*SuspendReply) Descriptor() ([]byte, []int) {
+	return fileDescriptor_7ac67a7adf3df9c7, []int{10}
+}
+
+func (m *SuspendReply) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_SuspendReply.Unmarshal(m, b)
+}
+func (m *SuspendReply) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_SuspendReply.Marshal(b, m, deterministic)
+}
+func (m *SuspendReply) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_SuspendReply.Merge(m, src)
+}
+func (m *SuspendReply) XXX_Size() int {
+	return xxx_messageInfo_SuspendReply.Size(m)
+}
+func (m *SuspendReply) XXX_DiscardUnknown() {
+	xxx_messageInfo_SuspendReply.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_SuspendReply proto.InternalMessageInfo
+
+func (m *SuspendReply) GetSuccess() bool {
+	if m != nil {
+		return m.Success
+	}
+	return false
+}
+
+func (m *SuspendReply) GetReason() string {
+	if m != nil {
+		return m.Reason
+	}
+	return ""
 }
 
 func init() {
@@ -387,31 +575,39 @@ func init() {
 	proto.RegisterType((*GetStateReply)(nil), "gravity.api.pipeline.GetStateReply")
 	proto.RegisterType((*CreateSnapshotRequest)(nil), "gravity.api.pipeline.CreateSnapshotRequest")
 	proto.RegisterType((*CreateSnapshotReply)(nil), "gravity.api.pipeline.CreateSnapshotReply")
+	proto.RegisterType((*ReleaseSnapshotRequest)(nil), "gravity.api.pipeline.ReleaseSnapshotRequest")
+	proto.RegisterType((*ReleaseSnapshotReply)(nil), "gravity.api.pipeline.ReleaseSnapshotReply")
 	proto.RegisterType((*FetchSnapshotRequest)(nil), "gravity.api.pipeline.FetchSnapshotRequest")
 	proto.RegisterType((*FetchSnapshotReply)(nil), "gravity.api.pipeline.FetchSnapshotReply")
+	proto.RegisterType((*SuspendRequest)(nil), "gravity.api.pipeline.SuspendRequest")
+	proto.RegisterType((*SuspendReply)(nil), "gravity.api.pipeline.SuspendReply")
 }
 
 func init() { proto.RegisterFile("pipeline.proto", fileDescriptor_7ac67a7adf3df9c7) }
 
 var fileDescriptor_7ac67a7adf3df9c7 = []byte{
-	// 298 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x9c, 0x92, 0x3f, 0x4f, 0xc3, 0x30,
-	0x10, 0xc5, 0x65, 0xd2, 0x16, 0x7a, 0x6a, 0xf9, 0x63, 0x0a, 0xca, 0x84, 0x22, 0x4f, 0x99, 0xba,
-	0x30, 0x30, 0x23, 0x2a, 0xaa, 0x8a, 0x05, 0x39, 0x9f, 0xc0, 0x89, 0xae, 0x34, 0x22, 0x8a, 0x1d,
-	0xdb, 0xa9, 0x94, 0xaf, 0xc2, 0xa7, 0x45, 0x31, 0x71, 0x1b, 0x32, 0x66, 0xbb, 0xf7, 0xa2, 0xbb,
-	0xfc, 0xf4, 0x9e, 0xe1, 0x5a, 0xe5, 0x0a, 0x8b, 0xbc, 0xc4, 0xb5, 0xd2, 0xd2, 0x4a, 0xba, 0xfa,
-	0xd2, 0xe2, 0x98, 0xdb, 0x66, 0x2d, 0x54, 0xbe, 0xf6, 0xdf, 0xd8, 0x2b, 0x2c, 0x3f, 0xbb, 0x99,
-	0xa3, 0x2a, 0x1a, 0x1a, 0xc2, 0xa5, 0xa9, 0xb3, 0x0c, 0x8d, 0x09, 0x49, 0x44, 0xe2, 0x2b, 0xee,
-	0x25, 0x7d, 0x84, 0x99, 0x46, 0x61, 0x64, 0x19, 0x5e, 0x44, 0x24, 0x9e, 0xf3, 0x4e, 0xb1, 0x3b,
-	0xb8, 0xd9, 0xa2, 0x4d, 0xac, 0xb0, 0xc8, 0xb1, 0xaa, 0xd1, 0x58, 0x56, 0xc1, 0xf2, 0x6c, 0x8d,
-	0xba, 0xda, 0x6e, 0x14, 0xc2, 0xd8, 0x04, 0xab, 0x30, 0x88, 0x48, 0x3c, 0xe1, 0x5e, 0xd2, 0x15,
-	0x4c, 0x33, 0x59, 0x97, 0x36, 0x9c, 0x38, 0xff, 0x4f, 0xb0, 0x17, 0x78, 0x78, 0xd3, 0x28, 0x2c,
-	0x26, 0xa5, 0x50, 0xe6, 0x20, 0x6d, 0xc7, 0x42, 0x9f, 0x00, 0x4c, 0x67, 0xed, 0x36, 0xee, 0xef,
-	0x73, 0xde, 0x73, 0xd8, 0x16, 0xee, 0x87, 0x8b, 0xe3, 0x72, 0xf8, 0x21, 0xb0, 0x7a, 0x47, 0x9b,
-	0x1d, 0x86, 0x04, 0x0c, 0x16, 0xa6, 0x4e, 0x4d, 0xa6, 0xf3, 0x14, 0xf5, 0x89, 0xe1, 0x9f, 0xd7,
-	0x52, 0xfa, 0x4e, 0x76, 0x1b, 0x77, 0x78, 0xc2, 0x7b, 0x0e, 0xbd, 0x85, 0xe0, 0x1b, 0x1b, 0x17,
-	0xc5, 0x82, 0xb7, 0x63, 0x8b, 0x21, 0xf7, 0x7b, 0x83, 0x3e, 0x87, 0x4e, 0x9d, 0xe3, 0x99, 0x46,
-	0x24, 0x0e, 0x7c, 0x3c, 0x47, 0xa0, 0x03, 0xb6, 0x71, 0xb5, 0x9c, 0xae, 0x07, 0xbd, 0xf0, 0x7d,
-	0x59, 0x1f, 0xd8, 0x38, 0x98, 0x05, 0xf7, 0x32, 0x9d, 0xb9, 0xc7, 0xf7, 0xfc, 0x1b, 0x00, 0x00,
-	0xff, 0xff, 0x72, 0x5a, 0x8c, 0x41, 0x8e, 0x02, 0x00, 0x00,
+	// 357 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xa4, 0x53, 0xcd, 0x4e, 0xf3, 0x30,
+	0x10, 0x54, 0xbe, 0xfe, 0x7c, 0xed, 0x2a, 0x2d, 0x60, 0x42, 0x15, 0x71, 0x40, 0x51, 0x4e, 0x39,
+	0xf5, 0xc2, 0x01, 0x8e, 0x20, 0x2a, 0x4a, 0xc5, 0xa5, 0x72, 0x9e, 0xc0, 0x35, 0x5b, 0x1a, 0x11,
+	0xc5, 0x6e, 0xec, 0x54, 0xca, 0xab, 0xf1, 0x74, 0x28, 0xc6, 0xe9, 0x1f, 0x5c, 0x1a, 0x6e, 0x9e,
+	0x49, 0x76, 0x3c, 0x99, 0xd9, 0xc0, 0x50, 0x26, 0x12, 0xd3, 0x24, 0xc3, 0xb1, 0xcc, 0x85, 0x16,
+	0xc4, 0x7b, 0xcf, 0xd9, 0x26, 0xd1, 0xe5, 0x98, 0xc9, 0x64, 0x5c, 0x3f, 0x0b, 0x1f, 0x61, 0x30,
+	0xb7, 0x67, 0x8a, 0x32, 0x2d, 0x89, 0x0f, 0xff, 0x55, 0xc1, 0x39, 0x2a, 0xe5, 0x3b, 0x81, 0x13,
+	0xf5, 0x68, 0x0d, 0xc9, 0x08, 0xba, 0x39, 0x32, 0x25, 0x32, 0xff, 0x5f, 0xe0, 0x44, 0x7d, 0x6a,
+	0x51, 0x78, 0x01, 0x67, 0x53, 0xd4, 0xb1, 0x66, 0x1a, 0x29, 0xae, 0x0b, 0x54, 0x3a, 0x5c, 0xc3,
+	0x60, 0x47, 0x35, 0x52, 0xad, 0x26, 0x52, 0xa6, 0x74, 0x8c, 0x6b, 0xbf, 0x15, 0x38, 0x51, 0x9b,
+	0xd6, 0x90, 0x78, 0xd0, 0xe1, 0xa2, 0xc8, 0xb4, 0xdf, 0x36, 0xfc, 0x37, 0x08, 0xef, 0xe0, 0xea,
+	0x29, 0x47, 0xa6, 0x31, 0xce, 0x98, 0x54, 0x2b, 0xa1, 0xad, 0x17, 0x72, 0x03, 0xa0, 0x2c, 0x35,
+	0x9b, 0x98, 0xdb, 0xfb, 0x74, 0x8f, 0x09, 0xa7, 0x70, 0x79, 0x3c, 0xd8, 0x2c, 0x87, 0x7b, 0x18,
+	0x51, 0x4c, 0x91, 0xa9, 0x93, 0x2d, 0xbc, 0x80, 0xf7, 0x63, 0xb2, 0x99, 0x87, 0x4f, 0x07, 0xbc,
+	0x67, 0xd4, 0x7c, 0x75, 0xa2, 0x05, 0x12, 0x82, 0xab, 0x8a, 0x85, 0xe2, 0x79, 0xb2, 0xc0, 0x7c,
+	0x36, 0xb1, 0xb2, 0x07, 0x5c, 0xa5, 0xc1, 0x45, 0x9a, 0x22, 0xd7, 0x89, 0xc8, 0x4c, 0x2b, 0x7d,
+	0xba, 0xc7, 0x90, 0x73, 0x68, 0x7d, 0x60, 0x69, 0x6a, 0x71, 0x69, 0x75, 0xac, 0x6c, 0x8a, 0xe5,
+	0x52, 0xa1, 0xf6, 0x3b, 0xa6, 0x2b, 0x8b, 0x76, 0x15, 0x76, 0x03, 0x27, 0x6a, 0xd5, 0x15, 0x6e,
+	0x80, 0x1c, 0x79, 0xff, 0xd3, 0xea, 0xbc, 0x62, 0x69, 0x4c, 0xba, 0xb4, 0x86, 0x87, 0xab, 0xb3,
+	0xbd, 0x77, 0x0e, 0xc3, 0xb8, 0x50, 0x12, 0xb3, 0xb7, 0x3a, 0xad, 0xe3, 0x34, 0x9c, 0x5f, 0xd2,
+	0xb8, 0x86, 0x5e, 0x5c, 0xbd, 0x9e, 0x71, 0xb4, 0x1b, 0xba, 0xc5, 0xe1, 0x03, 0xb8, 0x5b, 0xc5,
+	0x46, 0xdf, 0xb0, 0xe8, 0x9a, 0x9f, 0xf6, 0xf6, 0x2b, 0x00, 0x00, 0xff, 0xff, 0xaa, 0x95, 0xa7,
+	0x61, 0xc6, 0x03, 0x00, 0x00,
 }

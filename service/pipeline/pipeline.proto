@@ -26,17 +26,37 @@ message CreateSnapshotReply {
   string reason = 2;
 }
 
+message ReleaseSnapshotRequest {
+  string snapshotID = 1;
+}
+
+message ReleaseSnapshotReply {
+  bool success = 1;
+  string reason = 2;
+}
+
 message FetchSnapshotRequest {
-  string subscriberID = 1;
-  uint64 pipelineID = 2;
-  bytes key = 3;
-  uint64 offset = 4;
-  int64 count = 5;
+  string snapshotID = 1;
+  string subscriberID = 2;
+  string collection = 3;
+  bytes key = 4;
+  uint64 offset = 5;
+  int64 count = 6;
 }
 
 message FetchSnapshotReply{
   bool success = 1;
   string reason = 2;
-  uint64 count = 3;
-  bytes lastKey = 4; 
+  bytes lastKey = 3; 
+  int64 count = 4;
+}
+
+message SuspendRequest {
+  string subscriberID = 1;
+  uint64 Sequence = 3;
+}
+
+message SuspendReply {
+  bool success = 1;
+  string reason = 2;
 }
