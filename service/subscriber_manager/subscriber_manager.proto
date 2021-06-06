@@ -2,6 +2,8 @@ syntax = "proto3";
 
 package gravity.api.subscriber_manager;
 
+import "google/protobuf/timestamp.proto";
+
 enum SubscriberType {
   TRANSMITTER = 0;
   EXPORTER = 1;
@@ -28,11 +30,21 @@ message UnregisterSubscriberReply {
   string reason = 2;
 }
 
+message HealthCheckRequest {
+  string subscriberID = 1;
+}
+
+message HealthCheckReply {
+  bool success = 1;
+  string reason = 2;
+}
+
 message Subscriber {
   string subscriberID = 1;
   string name = 2;
   SubscriberType type = 3;
   string component = 4;
+  google.protobuf.Timestamp lastCheck = 5;
 }
 
 message GetSubscribersRequest {
