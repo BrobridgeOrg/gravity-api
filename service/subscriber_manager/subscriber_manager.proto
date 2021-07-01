@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "./";
+
 package gravity.api.subscriber_manager;
 
 import "google/protobuf/timestamp.proto";
@@ -14,6 +16,7 @@ message RegisterSubscriberRequest {
   string name = 2;
   SubscriberType type = 3;
   string component = 4;
+  string token = 5;
 }
 
 message RegisterSubscriberReply {
@@ -45,6 +48,7 @@ message Subscriber {
   SubscriberType type = 3;
   string component = 4;
   google.protobuf.Timestamp lastCheck = 5;
+  string token = 6;
 }
 
 message GetSubscribersRequest {
