@@ -1,0 +1,83 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+package gravity.api.authenticator;
+
+message Entity {
+  string appID = 1;
+  string appName = 2;
+  string token = 3;
+  bytes entityInfo = 4;
+}
+
+message AuthenticateRequest {
+  string appID = 1;
+  string token = 2;
+}
+
+message AuthenticateReply {
+  bool success = 1;
+  string reason = 2;
+  Entity entity = 3;
+}
+
+message CreateEntityRequest {
+  Entity entity = 1;
+}
+
+message CreateEntityReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UpdateEntityTokenRequest {
+  string appID = 1;
+  string token = 2;
+}
+
+message UpdateEntityTokenReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UpdateEntityRequest {
+  string appID = 1;
+  Entity entity = 2;
+}
+
+message UpdateEntityReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message GetEntityRequest {
+  string appID = 1;
+}
+
+message GetEntityReply {
+  bool success = 1;
+  string reason = 2;
+  Entity entity = 3;
+}
+
+message DeleteEntityRequest {
+  string appID = 1;
+}
+
+message DeleteEntityReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message GetEntitiesRequest {
+  int32 offset = 1;
+  int32 limit = 2;
+}
+
+message GetEntitiesReply {
+  bool success = 1;
+  string reason = 2;
+  int32 total = 3;
+  repeated Entity entities = 4;
+}
