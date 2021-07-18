@@ -8,7 +8,7 @@ message Entity {
   string appID = 1;
   string appName = 2;
   string token = 3;
-  bytes entityInfo = 4;
+  bytes properties = 4;
 }
 
 message AuthenticateRequest {
