@@ -7,13 +7,13 @@ package gravity.api.authenticator;
 message Entity {
   string appID = 1;
   string appName = 2;
-  string token = 3;
+  string key = 3;
   bytes properties = 4;
 }
 
 message AuthenticateRequest {
   string appID = 1;
-  string token = 2;
+  bytes token = 2;
 }
 
 message AuthenticateReply {
@@ -31,12 +31,12 @@ message CreateEntityReply {
   string reason = 2;
 }
 
-message UpdateEntityTokenRequest {
+message UpdateEntityKeyRequest {
   string appID = 1;
-  string token = 2;
+  string key = 2;
 }
 
-message UpdateEntityTokenReply {
+message UpdateEntityKeyReply {
   bool success = 1;
   string reason = 2;
 }

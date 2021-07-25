@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "./";
+
 package gravity.api.dsa;
 
 service DataSourceAdapter {
@@ -30,4 +32,15 @@ message PublishRequest {
 message PublishReply {
   bool success = 1;
   string reason = 2;
+}
+
+message Event {
+  string primaryKey = 1;
+  string eventName = 2;
+  bytes payload = 3;
+}
+
+message Packet {
+  int32 pipelineID = 1;
+  repeated Event events = 2;
 }

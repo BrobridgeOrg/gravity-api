@@ -16,7 +16,8 @@ message RegisterSubscriberRequest {
   string name = 2;
   SubscriberType type = 3;
   string component = 4;
-  string token = 5;
+  string appID  = 5;
+  bytes token = 6;
 }
 
 message RegisterSubscriberReply {
@@ -48,7 +49,9 @@ message Subscriber {
   SubscriberType type = 3;
   string component = 4;
   google.protobuf.Timestamp lastCheck = 5;
-  string token = 6;
+  string appID = 6;
+  string accessKey = 7;
+  repeated string permissions = 8;
 }
 
 message GetSubscribersRequest {

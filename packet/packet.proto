@@ -1,0 +1,10 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+package gravity.api.packet;
+
+message Packet {
+  string appID = 1;
+  bytes payload = 2;
+}

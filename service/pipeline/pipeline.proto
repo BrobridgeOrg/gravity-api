@@ -2,6 +2,9 @@ syntax = "proto3";
 
 package gravity.api.pipeline;
 
+message Packet {
+}
+
 message PipelineReply {
   bool success = 1;
   string reason = 2;

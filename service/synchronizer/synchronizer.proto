@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "./";
+
 package gravity.api.synchronizer;
 
 service Synchronizer {
@@ -28,6 +30,8 @@ message RevokePipelineReply {
 message RegisterSubscriberRequest {
   string subscriberID = 1;
   string Name = 2;
+  string AppID = 3;
+  string AccessKey = 4;
 }
 
 message RegisterSubscriberReply {
