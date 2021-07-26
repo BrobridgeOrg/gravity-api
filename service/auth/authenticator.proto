@@ -71,8 +71,8 @@ message DeleteEntityReply {
 }
 
 message GetEntitiesRequest {
-  int32 offset = 1;
-  int32 limit = 2;
+  string startID = 1;
+  int32 count = 2;
 }
 
 message GetEntitiesReply {
