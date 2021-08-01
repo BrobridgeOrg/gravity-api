@@ -1,11 +1,15 @@
 syntax = "proto3";
 
+option go_package = "./";
+
 package gravity.api.adapter_manager;
 
 message RegisterAdapterRequest {
   string adapterID = 1;
   string name = 2;
   string component = 3;
+  string appID  = 5;
+  bytes token = 6;
 }
 
 message RegisterAdapterReply {

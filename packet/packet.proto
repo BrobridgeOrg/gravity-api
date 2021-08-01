@@ -7,4 +7,11 @@ package gravity.api.packet;
 message Packet {
   string appID = 1;
   bytes payload = 2;
+  bool error = 3;
+  string reason = 4;
+}
+
+message Payload {
+  string token = 1; 
+  bytes data = 2;
 }

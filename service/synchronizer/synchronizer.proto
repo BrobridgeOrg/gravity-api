@@ -4,7 +4,19 @@ option go_package = "./";
 
 package gravity.api.synchronizer;
 
-service Synchronizer {
+message Key {
+  string appID = 1;
+  bytes key = 2;
+  repeated string permissions = 3;
+}
+
+message UpdateKeyringRequest {
+  repeated Key keys = 1;
+}
+
+message UpdateKeyringReply {
+  bool success = 1;
+  string reason = 2;
 }
 
 message AssignPipelineRequest {
