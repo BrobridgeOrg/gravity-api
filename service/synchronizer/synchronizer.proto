@@ -8,6 +8,7 @@ message Key {
   string appID = 1;
   bytes key = 2;
   repeated string permissions = 3;
+  repeated string collections = 4;
 }
 
 message UpdateKeyringRequest {
