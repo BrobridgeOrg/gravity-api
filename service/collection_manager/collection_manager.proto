@@ -1,0 +1,51 @@
+syntax = "proto3";
+
+option go_package = "./";
+
+package gravity.api.collection_manager;
+
+import "google/protobuf/timestamp.proto";
+
+message Collection {
+  string collectionID = 1;
+  string name = 2;
+  string desc = 3;
+  google.protobuf.Timestamp createdAt = 4;
+}
+
+message RegisterRequest {
+  Collection collection = 1;
+}
+
+message RegisterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UnregisterRequest {
+  string collectionID = 1;
+}
+
+message UnregisterReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message GetCollectionRequest {
+  string collectionID = 1;
+}
+
+message GetCollectionReply {
+  bool success = 1;
+  string reason = 2;
+  Collection collection = 3;
+}
+
+message GetCollectionsRequest {
+}
+
+message GetCollectionsReply {
+  bool success = 1;
+  string reason = 2;
+  repeated Collection collections = 3;
+}
