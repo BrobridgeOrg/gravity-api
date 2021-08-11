@@ -53,6 +53,7 @@ message Subscriber {
   string appID = 6;
   string accessKey = 7;
   repeated string permissions = 8;
+  repeated string collections = 9;
 }
 
 message GetSubscribersRequest {
