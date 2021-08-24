@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option go_package = "./";
+
 package gravity.api.pipeline;
 
 message Packet {
@@ -38,6 +40,22 @@ message ReleaseSnapshotReply {
   string reason = 2;
 }
 
+message PullSnapshotRequest {
+  string snapshotID = 1;
+  string subscriberID = 2;
+  string collection = 3;
+  bytes key = 4;
+  uint64 offset = 5;
+  int64 count = 6;
+}
+
+message PullSnapshotReply{
+  bool success = 1;
+  string reason = 2;
+  bytes lastKey = 3; 
+  repeated bytes records = 4;
+}
+
 message FetchSnapshotRequest {
   string snapshotID = 1;
   string subscriberID = 2;
@@ -54,12 +72,36 @@ message FetchSnapshotReply{
   int64 count = 4;
 }
 
+message PullEventsRequest {
+  string subscriberID = 1;
+  uint64 pipelineID = 2;
+  uint64 startAt = 3;
+  uint64 offset = 4;
+  int64 count = 5;
+}
+
+message PullEventsReply {
+  bool success = 1;
+  string reason = 2;
+  uint64 lastSeq = 3;
+  repeated bytes events = 4;
+}
+
 message SuspendRequest {
   string subscriberID = 1;
   uint64 Sequence = 3;
 }
 
 message SuspendReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message AwakeRequest {
+  string subscriberID = 1;
+}
+
+message AwakeReply {
   bool success = 1;
   string reason = 2;
 }
