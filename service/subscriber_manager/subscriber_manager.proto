@@ -18,6 +18,7 @@ message RegisterSubscriberRequest {
   string component = 4;
   string appID  = 5;
   bytes token = 6;
+  repeated uint64 pipelines = 7;
 }
 
 message RegisterSubscriberReply {
@@ -31,6 +32,16 @@ message UnregisterSubscriberRequest {
 }
 
 message UnregisterSubscriberReply {
+  bool success = 1;
+  string reason = 2;
+}
+
+message UpdateSubscriberPropsRequest {
+  string subscriberID = 1;
+  repeated uint64 pipelines = 2;
+}
+
+message UpdateSubscriberPropsReply {
   bool success = 1;
   string reason = 2;
 }
@@ -54,6 +65,7 @@ message Subscriber {
   string accessKey = 7;
   repeated string permissions = 8;
   repeated string collections = 9;
+  repeated uint64 pipelines = 10;
 }
 
 message GetSubscribersRequest {
