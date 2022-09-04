@@ -20,6 +20,7 @@ message GetStateReply{
   string reason = 2;
   uint64 lastSeq = 3;
   uint64 count = 4;
+  uint64 snapshotLastSeq = 5;
 }
 
 message CreateSnapshotRequest {
