@@ -21,6 +21,7 @@ message GetStateReply{
   uint64 lastSeq = 3;
   uint64 count = 4;
   uint64 snapshotLastSeq = 5;
+  uint64 snapshotCount = 6;
 }
 
 message CreateSnapshotRequest {
